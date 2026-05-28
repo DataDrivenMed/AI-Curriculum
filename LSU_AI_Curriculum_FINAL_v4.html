@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LSU SOM · AI-Ready MD Curriculum · AY 2026-27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lsu-purple:#461D7C;--lsu-gold:#FDD023;--lsu-deep:#2A0F4A;
+  --navy:#0D1B2A;--slate:#1B2B3B;--text:#1A2332;--muted:#5A6A7A;--light:#8A9AB0;
+  --border:#D8E4F0;--bg:#F7F9FC;--white:#FFFFFF;--card:#FFFFFF;
+  --p1:#6D28D9;--p1l:#EDE9FE;--p1m:#8B5CF6;
+  --p2:#92400E;--p2l:#FEF3C7;--p2m:#D97706;
+  --p3:#064E3B;--p3l:#D1FAE5;--p3m:#059669;
+  --p4:#1E3A8A;--p4l:#DBEAFE;--p4m:#3B82F6;
+  --red:#B91C1C;--redl:#FEE2E2;--redm:#DC2626;
+  --green:#065F46;--greenl:#D1FAE5;
+  --amber:#92400E;--amberl:#FEF3C7;
+  --sh:0 2px 12px rgba(13,27,42,0.07);--shl:0 8px 32px rgba(13,27,42,0.11);
+  --r:0.75rem;--rs:0.4rem;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;font-size:15px}
+h1,h2,h3,h4{font-family:'Lora',serif;letter-spacing:-0.01em}
+code,pre,.mono{font-family:'JetBrains Mono',monospace}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(10,20,35,0.96);backdrop-filter:blur(14px);
+  border-bottom:2px solid var(--lsu-gold);padding:0.55rem 1.75rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.nav-brand{display:flex;align-items:center;gap:0.65rem;flex-shrink:0}
+.nav-logo{width:2rem;height:2rem;background:var(--lsu-purple);border-radius:0.35rem;
+  display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;
+  font-weight:700;color:var(--lsu-gold);font-size:0.85rem;border:1px solid rgba(253,208,35,0.3)}
+.nav-title{color:white;font-size:0.88rem;font-weight:600;line-height:1.25}
+.nav-title small{display:block;color:rgba(255,255,255,0.42);font-size:0.68rem;font-weight:400}
+.nav-links{display:flex;gap:0.15rem;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.73rem;font-weight:500;
+  padding:0.3rem 0.55rem;border-radius:0.3rem;transition:all 0.18s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--lsu-gold);background:rgba(253,208,35,0.09)}
+@media(max-width:800px){.nav-links{display:none}}
+
+/* CONTAINERS */
+.wrap{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+section{padding:2.75rem 0}
+.section-head{margin-bottom:1.75rem}
+.section-head h2{font-size:1.65rem;color:var(--navy);margin-bottom:0.2rem}
+.section-head p{color:var(--muted);font-size:0.88rem}
+.section-rule{display:inline-block;width:3px;height:1.5rem;border-radius:1.5px;
+  background:linear-gradient(180deg,var(--lsu-purple),var(--lsu-gold));
+  margin-right:0.65rem;vertical-align:middle;flex-shrink:0}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  box-shadow:var(--sh);transition:box-shadow 0.2s,transform 0.2s}
+.card:hover{box-shadow:var(--shl)}
+
+/* GRID HELPERS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+@media(max-width:960px){.grid-4{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* TAGS / PILLS */
+.tag{display:inline-block;padding:0.12rem 0.45rem;border-radius:1rem;font-size:0.68rem;font-weight:600;
+  font-family:'Inter',sans-serif;letter-spacing:0.02em}
+.tag-p1{background:var(--p1l);color:var(--p1)}
+.tag-p2{background:var(--p2l);color:var(--p2)}
+.tag-p3{background:var(--p3l);color:var(--p3)}
+.tag-p4{background:var(--p4l);color:var(--p4)}
+.tag-red{background:var(--redl);color:var(--red)}
+.tag-gold{background:rgba(253,208,35,0.18);color:#7A5A00}
+.tag-gray{background:#EEF2F7;color:var(--muted)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0F2040 40%,var(--lsu-deep) 100%);
+  padding:3rem 1.75rem 2.5rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 75% 40%,rgba(253,208,35,0.06) 0%,transparent 55%)}
+.hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 340px;gap:2rem;align-items:start}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.4rem;
+  border:1px solid rgba(253,208,35,0.3);background:rgba(253,208,35,0.1);
+  color:var(--lsu-gold);padding:0.28rem 0.7rem;border-radius:2rem;
+  font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.9rem}
+.hero h1{font-size:clamp(1.75rem,3.2vw,2.6rem);color:white;line-height:1.15;margin-bottom:0.7rem}
+.hero h1 em{color:var(--lsu-gold);font-style:normal}
+.hero-sub{color:rgba(255,255,255,0.6);font-size:0.92rem;line-height:1.7;max-width:580px;margin-bottom:1.25rem}
+.hero-policy-box{background:rgba(253,208,35,0.1);border:1px solid rgba(253,208,35,0.25);
+  border-radius:0.6rem;padding:0.75rem 1rem;margin-bottom:1.25rem;font-size:0.82rem;
+  color:rgba(255,255,255,0.75);line-height:1.5}
+.hero-policy-box strong{color:var(--lsu-gold);display:block;margin-bottom:0.2rem;font-size:0.75rem;
+  text-transform:uppercase;letter-spacing:0.05em}
+.hero-stats{display:flex;gap:0.75rem;flex-wrap:wrap}
+.hstat{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
+  border-radius:0.5rem;padding:0.55rem 0.85rem;text-align:center;min-width:80px}
+.hstat-n{font-family:'Lora',serif;font-size:1.4rem;font-weight:700;color:var(--lsu-gold);line-height:1}
+.hstat-l{font-size:0.62rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.15rem}
+.hero-sidebar{display:flex;flex-direction:column;gap:0.5rem}
+.hside-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+  border-radius:0.55rem;padding:0.6rem 0.85rem;font-size:0.77rem;color:rgba(255,255,255,0.65);
+  line-height:1.4}
+.hside-card strong{display:block;color:rgba(255,255,255,0.9);font-size:0.72rem;margin-bottom:0.15rem;
+  text-transform:uppercase;letter-spacing:0.04em}
+
+/* NEVER-SKILLING SECTION */
+.ns-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:stretch;margin:1.5rem 0}
+@media(max-width:800px){.ns-flow{grid-template-columns:1fr;gap:1rem}}
+.ns-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.4rem;padding:0 0.5rem}
+.ns-box{border-radius:0.65rem;padding:1.1rem 1.1rem 1rem;border:1px solid var(--border)}
+.ns-box-label{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:0.35rem}
+.ns-box-title{font-family:'Lora',serif;font-size:1.05rem;font-weight:600;margin-bottom:0.3rem}
+.ns-box p{font-size:0.8rem;color:var(--muted);line-height:1.5}
+
+/* THREE-CONCEPT TABLE */
+.concept-table{width:100%;border-collapse:collapse;margin-top:1.25rem;font-size:0.83rem}
+.concept-table th{padding:0.6rem 0.85rem;text-align:left;font-size:0.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid var(--border);color:var(--muted)}
+.concept-table td{padding:0.65rem 0.85rem;vertical-align:top;border-bottom:1px solid var(--border);line-height:1.5}
+.concept-table tr:last-child td{border-bottom:none}
+.ct-ns td:first-child{border-left:3px solid var(--redm);background:rgba(220,38,38,0.03)}
+.ct-de td:first-child{border-left:3px solid var(--p2m);background:rgba(217,119,6,0.03)}
+.ct-ms td:first-child{border-left:3px solid var(--p1m);background:rgba(139,92,246,0.03)}
+
+/* TABLES - GENERAL */
+.data-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+.data-table th{background:var(--navy);color:white;padding:0.65rem 0.85rem;text-align:left;
+  font-size:0.71rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+.data-table th:first-child{border-radius:0.4rem 0 0 0}
+.data-table th:last-child{border-radius:0 0.4rem 0 0}
+.data-table td{padding:0.65rem 0.85rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:rgba(70,29,124,0.025)}
+
+/* TABS */
+.tab-row{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:1.25rem}
+.tb{padding:0.5rem 1rem;background:none;border:none;font-size:0.83rem;font-weight:600;
+  color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;
+  border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.18s;white-space:nowrap}
+.tb:hover{color:var(--navy)}
+.tb.on{color:var(--lsu-purple);border-bottom-color:var(--lsu-purple)}
+.tp{display:none}.tp.on{display:block}
+
+/* HIGHLIGHT BOX */
+.hl-box{padding:1rem 1.15rem;border-radius:0.55rem;font-size:0.83rem;line-height:1.6;border:1px solid}
+.hl-box strong{display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem}
+.hl-red{background:var(--redl);border-color:rgba(185,28,28,0.25);color:var(--red)}
+.hl-green{background:var(--greenl);border-color:rgba(5,150,105,0.25);color:var(--green)}
+.hl-amber{background:var(--amberl);border-color:rgba(217,119,6,0.25);color:var(--amber)}
+.hl-purple{background:var(--p1l);border-color:rgba(109,40,217,0.2);color:var(--p1)}
+.hl-blue{background:var(--p4l);border-color:rgba(59,130,246,0.25);color:var(--p4)}
+.hl-gold{background:rgba(253,208,35,0.12);border-color:rgba(253,208,35,0.3);color:#7A5A00}
+
+/* CALLOUT SHIFTS */
+.shift-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.1rem;position:relative;overflow:hidden}
+.shift-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px 3px 0 0}
+.shift-from{font-size:0.77rem;color:var(--muted);margin-bottom:0.2rem}
+.shift-arr{font-size:0.85rem;color:var(--light);margin:0.15rem 0}
+.shift-to{font-size:0.83rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem}
+.shift-why{font-size:0.77rem;color:var(--muted);line-height:1.55;border-top:1px solid var(--border);padding-top:0.4rem;margin-top:0.4rem}
+.shift-icon{font-size:1.4rem;margin-bottom:0.4rem}
+
+/* PHASE BANNER */
+.phase-banner{border-radius:0.65rem;padding:1.1rem 1.35rem;border-left:4px solid;margin-bottom:0.85rem}
+.pb-p1{background:var(--p1l);border-color:var(--p1)}
+.pb-p2{background:var(--p2l);border-color:var(--p2m)}
+.pb-p3{background:var(--p3l);border-color:var(--p3m)}
+.pb-p4{background:var(--p4l);border-color:var(--p4m)}
+
+/* TIMELINE */
+.tl-wrap{overflow-x:auto;padding-bottom:0.75rem}
+.tl{min-width:860px;display:grid;grid-template-columns:2fr 2fr 2fr 2fr;gap:0.75rem;padding:1rem 0}
+.tl-col{display:flex;flex-direction:column}
+.tl-bar{height:5px;border-radius:2.5px;margin-bottom:0.5rem}
+.tl-mo{font-size:0.65rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-bottom:0.35rem}
+.tl-icon{font-size:1.4rem;margin-bottom:0.3rem}
+.tl-title{font-size:0.82rem;font-weight:700;color:var(--navy);margin-bottom:0.45rem}
+.tl-chips{display:flex;flex-direction:column;gap:0.25rem}
+.tl-chip{font-size:0.7rem;padding:0.2rem 0.5rem;border-radius:0.35rem;border:1px solid;
+  background:var(--white);line-height:1.35;display:flex;align-items:center;gap:0.3rem}
+.tl-chip.exam{border-color:var(--redm);background:var(--redl);color:var(--red);font-weight:600}
+.tl-chip.gate{border-color:var(--p1);background:var(--p1l);color:var(--p1)}
+.tl-chip.ai{border-color:var(--p3m);background:var(--p3l);color:var(--p3)}
+.tl-chip.std{border-color:var(--border);color:var(--slate)}
+
+/* COMP GRID */
+.cg{display:grid;grid-template-columns:170px repeat(4,1fr);border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.cg-hd{background:var(--navy);color:white;padding:0.6rem 0.8rem;font-size:0.68rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:0.04em;text-align:center}
+.cg-hd:first-child{text-align:left;background:var(--lsu-purple)}
+.cg-label{background:rgba(70,29,124,0.06);padding:0.6rem 0.8rem;font-size:0.8rem;font-weight:600;
+  color:var(--lsu-purple);border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.cg-cell{padding:0.5rem 0.7rem;border-bottom:1px solid var(--border);
+  border-right:1px solid var(--border);font-size:0.74rem;color:var(--slate);
+  vertical-align:top;line-height:1.45}
+.cg-cell:last-child{border-right:none}
+.lv{display:inline-block;padding:0.08rem 0.35rem;border-radius:0.2rem;font-size:0.65rem;
+  font-weight:700;margin-bottom:0.15rem;text-transform:uppercase;letter-spacing:0.04em}
+.lv-i{background:var(--p1l);color:var(--p1)}.lv-a{background:var(--p2l);color:var(--p2)}
+.lv-m{background:var(--p3l);color:var(--p3)}.lv-l{background:var(--p4l);color:var(--p4)}
+
+/* EPA TABLE */
+.epa-table{width:100%;border-collapse:collapse;font-size:0.8rem}
+.epa-table th{background:var(--lsu-purple);color:white;padding:0.55rem 0.8rem;
+  font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;text-align:left}
+.epa-table td{padding:0.6rem 0.8rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.epa-table tr:nth-child(even) td{background:rgba(70,29,124,0.025)}
+.epa-table tr:last-child td{border-bottom:none}
+.epa-num{font-weight:700;color:var(--lsu-purple);white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:0.78rem}
+
+/* FACULTY / WORKLOAD */
+.wl-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+.wl-table th{background:var(--slate);color:white;padding:0.6rem 0.85rem;
+  font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;text-align:left}
+.wl-table td{padding:0.6rem 0.85rem;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.5}
+.wl-table tr:nth-child(even) td{background:rgba(27,43,59,0.025)}
+.wl-table tr:last-child td{border-bottom:none}
+.burden-low{color:var(--green);font-weight:600}.burden-med{color:var(--amber);font-weight:600}
+.burden-high{color:var(--red);font-weight:600}
+
+/* CQI DASHBOARD */
+.cqi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+@media(max-width:800px){.cqi-grid{grid-template-columns:1fr 1fr}}
+.cqi-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.1rem;box-shadow:var(--sh)}
+.cqi-card-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:0.35rem}
+.cqi-card-val{font-family:'Lora',serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:0.2rem}
+.cqi-card-sub{font-size:0.75rem;color:var(--muted);margin-bottom:0.65rem}
+.bar-wrap{height:8px;background:#EEF2F7;border-radius:4px;overflow:hidden;margin-bottom:0.3rem}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.5s ease}
+.cqi-target{font-size:0.68rem;color:var(--light)}
+
+/* STAKEHOLDER TABLE */
+.st-table{width:100%;border-collapse:collapse;font-size:0.82rem}
+.st-table th{background:var(--lsu-purple);color:white;padding:0.6rem 0.85rem;
+  font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;text-align:left}
+.st-table td{padding:0.65rem 0.85rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.st-table tr:nth-child(even) td{background:rgba(70,29,124,0.025)}
+.st-table tr:last-child td{border-bottom:none}
+.concern-tag{display:inline-block;padding:0.12rem 0.4rem;border-radius:0.25rem;
+  font-size:0.68rem;font-weight:600;background:var(--redl);color:var(--red);margin-bottom:0.3rem}
+.answer-tag{display:inline-block;padding:0.12rem 0.4rem;border-radius:0.25rem;
+  font-size:0.68rem;font-weight:600;background:var(--greenl);color:var(--green)}
+
+/* PILOT / 90-DAY */
+.pilot-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:1.25rem 0;position:relative}
+@media(max-width:860px){.pilot-steps{grid-template-columns:1fr}}
+.pilot-step{background:var(--card);border:1px solid var(--border);padding:1rem;
+  position:relative;transition:box-shadow 0.2s}
+.pilot-step:hover{box-shadow:var(--sh)}
+.pilot-step:not(:last-child){border-right:none}
+.pilot-step:first-child{border-radius:var(--r) 0 0 var(--r)}
+.pilot-step:last-child{border-radius:0 var(--r) var(--r) 0;border-right:1px solid var(--border)}
+@media(max-width:860px){.pilot-step:not(:last-child){border-right:1px solid var(--border);border-bottom:none}
+  .pilot-step:first-child{border-radius:var(--r) var(--r) 0 0}
+  .pilot-step:last-child{border-radius:0 0 var(--r) var(--r)}}
+.pilot-step-num{width:1.6rem;height:1.6rem;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:0.72rem;font-weight:700;color:white;margin-bottom:0.5rem}
+.pilot-step h4{font-size:0.88rem;font-weight:700;font-family:'Lora',serif;color:var(--navy);margin-bottom:0.25rem}
+.pilot-step p{font-size:0.77rem;color:var(--muted);line-height:1.5}
+.pilot-tl{font-size:0.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;
+  letter-spacing:0.05em;margin-top:0.5rem;padding-top:0.4rem;border-top:1px solid var(--border)}
+
+/* THE ASK */
+.ask-box{background:linear-gradient(135deg,var(--lsu-deep) 0%,var(--navy) 100%);
+  border-radius:var(--r);padding:2rem;color:white;position:relative;overflow:hidden;border:1px solid rgba(253,208,35,0.2)}
+.ask-box::before{content:'"';position:absolute;right:1.5rem;top:0;font-size:8rem;
+  color:rgba(253,208,35,0.06);font-family:'Lora',serif;line-height:1}
+.ask-box h3{font-size:1.25rem;color:var(--lsu-gold);margin-bottom:0.3rem}
+.ask-box .ask-script{font-size:0.88rem;color:rgba(255,255,255,0.82);line-height:1.75;
+  font-style:italic;border-left:3px solid var(--lsu-gold);padding-left:1rem;margin:1rem 0}
+.meeting-minutes{display:grid;grid-template-columns:repeat(5,1fr);gap:0.75rem;margin-top:1.25rem}
+@media(max-width:700px){.meeting-minutes{grid-template-columns:1fr}}
+.mm-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+  border-radius:0.5rem;padding:0.75rem;font-size:0.77rem}
+.mm-box strong{display:block;color:var(--lsu-gold);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem}
+.mm-box p{color:rgba(255,255,255,0.7);line-height:1.5}
+
+/* GME SECTION */
+.gme-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);
+  padding:1.25rem;box-shadow:var(--sh)}
+.gme-milestone-row{display:flex;gap:0.6rem;align-items:flex-start;padding:0.65rem 0;
+  border-bottom:1px solid var(--border)}
+.gme-milestone-row:last-child{border-bottom:none}
+.gme-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:0.45rem}
+.gme-milestone-text{flex:1;font-size:0.82rem;line-height:1.5}
+.gme-milestone-text strong{display:block;color:var(--navy);font-size:0.83rem;margin-bottom:0.1rem}
+.gme-milestone-text span{color:var(--muted);font-size:0.78rem}
+.escalation-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin:1rem 0;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+@media(max-width:800px){.escalation-flow{grid-template-columns:1fr}}
+.ef-step{padding:0.85rem 0.7rem;border-right:1px solid var(--border);text-align:center;font-size:0.75rem;line-height:1.4}
+.ef-step:last-child{border-right:none}
+.ef-step-num{width:1.4rem;height:1.4rem;border-radius:50%;margin:0 auto 0.35rem;
+  display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:white}
+.ef-step strong{display:block;color:var(--navy);margin-bottom:0.15rem;font-size:0.75rem}
+.ef-step span{color:var(--muted);font-size:0.72rem}
+.ef-alert{background:var(--redl);border-top:2px solid var(--redm);color:var(--red)}
+
+/* TIPS */
+.tip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.tip-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem;box-shadow:var(--sh)}
+.tip-num{width:1.5rem;height:1.5rem;background:var(--lsu-purple);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:white;margin-bottom:0.5rem}
+.tip-card h4{font-size:0.88rem;font-weight:700;font-family:'Lora',serif;color:var(--navy);margin-bottom:0.25rem}
+.tip-card p{font-size:0.78rem;color:var(--muted);line-height:1.55}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,0.4);padding:1.5rem 2rem;text-align:center;font-size:0.75rem;line-height:1.8}
+footer strong{color:var(--lsu-gold)}
+
+/* RANGE INPUT */
+input[type=range]{width:100%;height:5px;background:#E2E8F0;border-radius:3px;outline:none;
+  -webkit-appearance:none;accent-color:var(--lsu-purple);cursor:pointer;margin:0.5rem 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;
+  border-radius:50%;background:var(--lsu-purple);cursor:pointer;
+  box-shadow:0 0 0 3px rgba(70,29,124,0.15);transition:transform 0.15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+
+/* PRINT HINT */
+.print-note{font-size:0.72rem;color:var(--muted);text-align:right;margin-bottom:0.5rem;font-style:italic}
+
+
+/* ── TOOL SHARED STYLES ── */
+.pp-opt, .ra-opt {
+  display: flex; align-items: flex-start; gap: 0.55rem;
+  padding: 0.5rem 0.7rem; border: 1px solid #D8E4F0;
+  border-radius: 0.4rem; cursor: pointer; font-size: 0.83rem;
+  margin-bottom: 0.3rem; line-height: 1.4; color: #1B2B3B;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none; -webkit-user-select: none;
+}
+.pp-opt:hover, .ra-opt:hover { border-color: #461D7C; background: #f5f3ff; }
+.pp-opt.selected { border-color: #FDD023; background: rgba(253,208,35,0.07); }
+.ra-opt.selected { border-color: #461D7C; background: #f5f3ff; }
+.pp-radio, .ra-radio {
+  width: 14px; height: 14px; border: 2px solid #D8E4F0;
+  border-radius: 50%; flex-shrink: 0; margin-top: 2px;
+  display: inline-block; transition: all 0.15s;
+}
+.pp-opt.selected .pp-radio { border-color: #FDD023; background: #FDD023; box-shadow: inset 0 0 0 2px white; }
+.ra-opt.selected .ra-radio { border-color: #461D7C; background: #461D7C; box-shadow: inset 0 0 0 2px white; }
+.ra-badge { margin-left: auto; flex-shrink: 0; font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.35rem; border-radius: 0.2rem; }
+.ra-badge-0 { background: rgba(220,38,38,0.1); color: #dc2626; }
+.ra-badge-1 { background: rgba(245,158,11,0.1); color: #b45309; }
+.ra-badge-2 { background: rgba(5,150,105,0.1); color: #059669; }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">LSU</div>
+    <div class="nav-title">AI-Ready MD Curriculum
+      <small>LSU Health New Orleans · School of Medicine · AY 2026-27</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#neverskilling">Never-Skilling</a>
+    <a href="#map">Curriculum Map</a>
+    <a href="#ai-thread">AI Thread</a>
+    <a href="#gme">GME &amp; Faculty</a>
+    <a href="#epa">EPA Mapping</a>
+    <a href="#competencies">Competencies</a>
+    <a href="#cqi">CQI</a>
+    <a href="#stakeholders">Stakeholders</a>
+    <a href="#pilot">Pilot Path</a>
+    <a href="#ask">The Ask</a>
+    <a href="#policy-planner">Policy Planner</a>
+    <a href="#readiness">Readiness</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-inner">
+<div>
+  <div class="hero-eyebrow">LSU SOM · Reasoning-First AI Curriculum · AY 2026-27</div>
+  <h1>The <em>MD Program</em> Needs a<br>Different Kind of AI Plan</h1>
+  <p class="hero-sub">Not a course. Not a lecture series. A structured thread woven through M1 to PGY2 that protects independent clinical reasoning while preparing every graduate for the AI-mediated residency environments they will enter on day one.</p>
+  <div class="hero-policy-box">
+    <strong>Built on LSU's existing foundation</strong>
+    LSU Health Sciences Center already has a Policy on Use of Generative AI by Medical Students — stating that students must not use generative AI as a substitute for their own knowledge acquisition, analysis, or self-reflection. This proposal operationalizes that policy into a measurable curriculum.
+  </div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Years</div></div>
+    <div class="hstat"><div class="hstat-n">12</div><div class="hstat-l">AI Milestones</div></div>
+    <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Pilot Touchpoints</div></div>
+    <div class="hstat"><div class="hstat-n">13</div><div class="hstat-l">EPAs Mapped</div></div>
+    <div class="hstat"><div class="hstat-n">90</div><div class="hstat-l">Day Pilot</div></div>
+  </div>
+</div>
+<div class="hero-sidebar">
+  <div class="hside-card"><strong>Evidence Base</strong>Ke et al. Nature Medicine 2026 · Hunt et al. npj Digital Medicine 2026 · Abdulnour et al. NEJM 2025</div>
+  <div class="hside-card"><strong>Accreditation Drivers</strong>LCME Elements 6.3, 7.1, 7.4, 7.6, 7.9 · ACGME CPR Active Consultation 2026-27</div>
+  <div class="hside-card"><strong>National Alignment</strong>AAMC Principles v2.0 (July 2025) · AMA HoD AI Literacy Policy (Nov 2025)</div>
+  <div class="hside-card"><strong>National Context</strong>77% of US medical schools now have AI in required curriculum. Only 47% have an appropriate-use policy. LSU has the policy. This is the curriculum.</div>
+  <div class="hside-card"><strong>Who This Is For</strong>Associate Deans of UME and GME · Curriculum Committee · Clinical faculty leads · Compliance and IT</div>
+</div>
+</div>
+</div>
+<!-- END HERO -->
+
+<!-- NEVER-SKILLING SECTION -->
+<section id="neverskilling">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>Why This Curriculum Exists: The Never-Skilling Problem</h2>
+  <p>Before any implementation detail, this is the clinical education problem that every other decision in this document is trying to solve.</p>
+</div>
+
+<div class="grid-2" style="gap:1.5rem;margin-bottom:1.5rem">
+<div>
+<p style="font-size:0.9rem;color:var(--slate);line-height:1.75;margin-bottom:1rem">
+The risk is not that AI will replace clinical reasoning. It is that students who use AI <em>before</em> they have built clinical reasoning may never build it. Ke et al. (Nature Medicine, 2026) call this <strong>never-skilling</strong> — and it is distinct from anything medical education has confronted before.
+</p>
+<p style="font-size:0.9rem;color:var(--slate);line-height:1.75;margin-bottom:1rem">
+When AI systems deliver correct answers during the developmental window when clinical schemas are forming, they remove the effortful cognitive processing that schema formation requires. The student who uses AI to generate a differential on day one of M1 does not practice the reasoning that would build the neural architecture for independent diagnosis. Two years later, that student may perform adequately on AI-assisted assessments and score poorly on AI-restricted licensing exams. The gap is not detectable until it is too late to close.
+</p>
+<p style="font-size:0.87rem;color:var(--muted);line-height:1.7">
+<strong style="color:var(--navy)">Important caveat:</strong> Direct causal evidence from clinical trainees does not yet exist. The concern is grounded in desirable difficulties theory (Bjork), cognitive load theory, and early empirical signals from nonclinical populations — including a randomized study showing a 17% reduction in unaided math scores after unrestricted AI tutor access (Bastani et al., cited in Ke et al. 2026). This framework is precautionary, not evidence-established.
+</p>
+</div>
+<div>
+<!-- Mechanistic flow -->
+<div class="ns-flow">
+  <div class="ns-box" style="background:var(--redl);border-color:rgba(185,28,28,0.25)">
+    <div class="ns-box-label" style="color:var(--red)">Trigger</div>
+    <div class="ns-box-title" style="color:var(--red)">AI in Answer-Delivery Mode</div>
+    <p>Student uses AI to generate differentials, management plans, or documentation during the formative window when clinical schemas should be forming independently.</p>
+  </div>
+  <div class="ns-arrow">→</div>
+  <div class="ns-box" style="background:var(--amberl);border-color:rgba(217,119,6,0.25)">
+    <div class="ns-box-label" style="color:var(--amber)">Mechanism</div>
+    <div class="ns-box-title" style="color:var(--amber)">Three Parallel Failures</div>
+    <p><strong>Competency acquisition failure</strong> — schemas never form<br><strong>Calibration paradox</strong> — confidence without competence<br><strong>Metacognitive erosion</strong> — professional identity as relay, not reasoner</p>
+  </div>
+  <div class="ns-arrow">→</div>
+  <div class="ns-box" style="background:var(--p1l);border-color:rgba(109,40,217,0.25)">
+    <div class="ns-box-label" style="color:var(--p1)">Outcome</div>
+    <div class="ns-box-title" style="color:var(--p1)">Never-Skilling</div>
+    <p>Graduate who cannot demonstrate AI-independent clinical reasoning. Fails AI-restricted licensing exams. Cannot practice in resource-limited settings. Cannot override AI errors.</p>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- Three-concept table -->
+<div class="card" style="overflow:hidden">
+<div style="padding:1rem 1.25rem 0.5rem;border-bottom:1px solid var(--border)">
+  <h3 style="font-size:1.05rem">Three Distinct Competency Risks — One Curriculum Addresses All Three</h3>
+  <p style="font-size:0.8rem;color:var(--muted)">Understanding the difference matters because the educational intervention for each is different.</p>
+</div>
+<div style="overflow-x:auto">
+<table class="concept-table">
+<thead>
+<tr>
+  <th>Concept</th><th>Definition</th><th>Who Is at Risk</th><th>How It Appears</th><th>Why It Is Dangerous</th><th>Curriculum Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="ct-ns">
+  <td><strong style="color:var(--redm)">Never-Skilling</strong><br><span class="tag tag-red" style="margin-top:0.3rem">Primary M1–M2 Risk</span></td>
+  <td style="font-size:0.8rem">Failure to develop foundational clinical reasoning competencies during formative training because AI substitutes the cognitive effort those competencies require.</td>
+  <td style="font-size:0.8rem">Medical students M1–M2. Affects all trainees equally. Disproportionate impact on those with lower baseline clinical exposure.</td>
+  <td style="font-size:0.8rem">Cannot generate differential without AI prompting. Fails AI-restricted exams. Confidently incorrect when AI is unavailable.</td>
+  <td style="font-size:0.8rem">Insidious. Masked by high performance on AI-assisted assessments. Undetectable until Step 1 or residency entry.</td>
+  <td style="font-size:0.8rem">AI-free proctored baseline (M1–M2). Standalone gate OSCE before clerkships. No AI in answer-delivery mode during assessed tasks.</td>
+</tr>
+<tr class="ct-de">
+  <td><strong style="color:var(--p2m)">De-Skilling</strong><br><span class="tag tag-p2" style="margin-top:0.3rem">Primary GME Risk</span></td>
+  <td style="font-size:0.8rem">Erosion of established clinical competencies in trained clinicians due to prolonged AI reliance. The cognitive structures exist but atrophy from disuse.</td>
+  <td style="font-size:0.8rem">Experienced residents and attending physicians who have already built clinical reasoning but increasingly outsource it to AI tools.</td>
+  <td style="font-size:0.8rem">Slower unaided diagnosis. Lower polyp detection rates when AI removed (gastroenterology evidence). Reduced independent radiology interpretation.</td>
+  <td style="font-size:0.8rem">Measurable against a known historical baseline. Detectable earlier than never-skilling but reversible only with structured re-exposure.</td>
+  <td style="font-size:0.8rem">Staged AI exposure model (PGY1 minimal → PGY2 graduated). Annual AI-restricted assessment for IM and EM residents. De-skilling surveillance built into program evaluation.</td>
+</tr>
+<tr class="ct-ms">
+  <td><strong style="color:var(--p1m)">Mis-Skilling</strong><br><span class="tag tag-p1" style="margin-top:0.3rem">M3–M4 Risk</span></td>
+  <td style="font-size:0.8rem">Acquisition of incorrect clinical reasoning patterns through uncritical adoption of biased or erroneous AI outputs. The student builds schemas — but builds them wrong.</td>
+  <td style="font-size:0.8rem">Students in M3–M4 clerkships with unmonitored access to AI-generated clinical documentation and differentials.</td>
+  <td style="font-size:0.8rem">Confidently incorrect differentials aligned with AI bias (e.g., ACS missed in women because AI anchored to musculoskeletal). Internalized race-based diagnostic errors.</td>
+  <td style="font-size:0.8rem">The most difficult to detect. Student appears clinically confident. Errors are systematic, not random. Can persist into practice.</td>
+  <td style="font-size:0.8rem">Adversarial AI debugging workshops (M2 and M3). Dual-Reasoning Reflection Log mandates independent reasoning before AI display. RAG audit trains source verification.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CURRICULUM MAP SECTION -->
+<section id="map" style="background:white">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>The 4-Year Curriculum Map</h2>
+  <p>What students do, when they do it, and where AI competency threads through existing curriculum — without adding a course.</p>
+</div>
+
+<!-- Big Picture Timeline -->
+<div class="tl-wrap" style="margin-bottom:1.75rem">
+<div class="tl">
+  <div class="tl-col">
+    <div class="tl-bar" style="background:var(--p1)"></div>
+    <div class="tl-mo">Months 1–12</div>
+    <div class="tl-icon">🧠</div>
+    <div class="tl-title" style="color:var(--p1)">M1 · Preclinical Year 1</div>
+    <div class="tl-chips">
+      <div class="tl-chip std">Anatomy, Physiology, Biochemistry</div>
+      <div class="tl-chip std">ICM — History &amp; Physical</div>
+      <div class="tl-chip ai">🤖 AI Literacy Module (Sem 1)</div>
+      <div class="tl-chip std">Ethics &amp; Professionalism</div>
+      <div class="tl-chip std">Medical Genetics, Cell Biology</div>
+    </div>
+  </div>
+  <div class="tl-col">
+    <div class="tl-bar" style="background:var(--p1m)"></div>
+    <div class="tl-mo">Months 13–24</div>
+    <div class="tl-icon">📚</div>
+    <div class="tl-title" style="color:var(--p1m)">M2 · Preclinical Year 2</div>
+    <div class="tl-chips">
+      <div class="tl-chip std">Pathophysiology (all systems)</div>
+      <div class="tl-chip std">Pharmacology &amp; Microbiology</div>
+      <div class="tl-chip ai">🤖 Adversarial AI Case (late M2)</div>
+      <div class="tl-chip gate">🔒 AI-Free Gate OSCE</div>
+      <div class="tl-chip exam">📋 USMLE Step 1 (end of M2)</div>
+    </div>
+  </div>
+  <div class="tl-col">
+    <div class="tl-bar" style="background:var(--p2m)"></div>
+    <div class="tl-mo">Months 25–36</div>
+    <div class="tl-icon">🏥</div>
+    <div class="tl-title" style="color:var(--p2m)">M3 · Core Clerkships</div>
+    <div class="tl-chips">
+      <div class="tl-chip std">IM · Surgery · Peds · OB/GYN</div>
+      <div class="tl-chip ai">🤖 DRRL — every IM admit</div>
+      <div class="tl-chip std">Psych · FM · Neurology</div>
+      <div class="tl-chip ai">🤖 RAG Audit + Discharge Safety</div>
+      <div class="tl-chip gate">🔒 Adversarial Workshop Gate</div>
+    </div>
+  </div>
+  <div class="tl-col">
+    <div class="tl-bar" style="background:var(--p3m)"></div>
+    <div class="tl-mo">Months 37–48</div>
+    <div class="tl-icon">🎓</div>
+    <div class="tl-title" style="color:var(--p3m)">M4 · Advanced &amp; Transition</div>
+    <div class="tl-chips">
+      <div class="tl-chip exam">📋 USMLE Step 2 CK</div>
+      <div class="tl-chip std">Sub-Internship (AI-independent)</div>
+      <div class="tl-chip ai">🤖 Mock AI Governance Board</div>
+      <div class="tl-chip gate">🔒 EPA Certification + Handoff</div>
+      <div class="tl-chip std">Transition to Residency Course</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Detail tabs -->
+<div class="tab-row">
+  <button class="tb on" onclick="sw('t-ov',this)">Overview Table</button>
+  <button class="tb" onclick="sw('t-ai',this)">AI Milestone Detail</button>
+  <button class="tb" onclick="sw('t-assess',this)">Assessment Schedule</button>
+  <button class="tb" onclick="sw('t-shifts',this)">What Changes When</button>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div id="t-ov" class="tp on" style="overflow-x:auto">
+<table class="data-table">
+<thead><tr>
+  <th style="width:80px">Phase</th><th>Learning Focus</th><th>Typical Courses &amp; Rotations</th>
+  <th>Key Assessments</th><th>Skills Developed</th><th>AI Deliverable</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="border-left:4px solid var(--p1);background:var(--p1l)">
+    <span style="color:var(--p1);font-weight:700;font-size:0.9rem">🧠 M1</span><br>
+    <span style="color:var(--muted);font-size:0.72rem">Months 1–12<br>Preclinical</span>
+  </td>
+  <td><strong>Biomedical foundations.</strong> Build the knowledge structures that clinical reasoning runs on. AI is not permitted in assessed tasks — because schema formation requires effortful processing, and that processing must happen before AI is allowed to shortcut it.</td>
+  <td style="font-size:0.8rem">Gross Anatomy · Histology · Biochemistry · Physiology · Cell Biology · Microbiology (intro) · ICM (History &amp; Physical) · Medical Genetics · Public Health · Ethics &amp; Professionalism</td>
+  <td><span class="tag tag-gray">NBME formative</span> <span class="tag tag-gray">Lab practicals</span> <span class="tag tag-gray">ICM OSCE (AI-free)</span> <span class="tag tag-gray">Ethics viva</span></td>
+  <td><span class="tag tag-gray">H&amp;P fundamentals</span> <span class="tag tag-gray">Clinical reasoning basics</span> <span class="tag tag-gray">Professionalism</span> <span class="tag tag-gray">Scientific literature</span></td>
+  <td><div class="hl-box hl-purple" style="font-size:0.78rem;padding:0.6rem 0.75rem"><strong>AI Literacy Module — M1 Semester 1</strong>90 min · ≥80% quiz pass · Concept map linking tokenization, hallucination, RAG, bias to clinical failure modes. Plug-in to existing informatics or ethics course.</div></td>
+</tr>
+<tr>
+  <td style="border-left:4px solid var(--p1m);background:var(--p1l)">
+    <span style="color:var(--p1m);font-weight:700;font-size:0.9rem">📚 M2</span><br>
+    <span style="color:var(--muted);font-size:0.72rem">Months 13–24<br>Preclinical</span>
+  </td>
+  <td><strong>Clinical integration + Step 1 readiness.</strong> Pathophysiology meets patient presentations. Late M2 introduces adversarial AI exposure — students learn to detect AI errors before they are ever permitted to use AI tools on clinical cases. The standalone gate OSCE must be passed before entering clerkships.</td>
+  <td style="font-size:0.8rem">Pathophysiology (all systems) · Pharmacology · Microbiology &amp; Immunology · Advanced ICM · Behavioral Sciences · Neuroscience · Radiology intro · USMLE Step 1 prep · Research elective (Varies)</td>
+  <td><span class="tag tag-red">📋 USMLE Step 1</span> <span class="tag tag-p1">🔒 AI-Free Gate OSCE</span> <span class="tag tag-gray">NBME shelf</span> <span class="tag tag-gray">Adversarial AI case</span> <span class="tag tag-gray">Oral defense</span></td>
+  <td><span class="tag tag-gray">Differential diagnosis</span> <span class="tag tag-gray">Drug mechanisms</span> <span class="tag tag-gray">AI error detection</span> <span class="tag tag-gray">Metacognitive calibration</span></td>
+  <td><div class="hl-box hl-amber" style="font-size:0.78rem;padding:0.6rem 0.75rem"><strong>Adversarial AI Case — Late M2</strong>3 cases × 3 error types. ≥8/9 identified for gate clearance. Plug-in to Pathology or ICM. Synthetic cases only. No PHI.</div></td>
+</tr>
+<tr>
+  <td style="border-left:4px solid var(--p2m);background:var(--p2l)">
+    <span style="color:var(--p2m);font-weight:700;font-size:0.9rem">🏥 M3</span><br>
+    <span style="color:var(--muted);font-size:0.72rem">Months 25–36<br>Core Clerkships</span>
+  </td>
+  <td><strong>Full clinical immersion.</strong> AI tools permitted only with a completed Dual-Reasoning Reflection Log. Pilot launches in Internal Medicine only. Same rubric across all IM sites maintains LCME comparability. Adversarial workshop required before M4 advancement.</td>
+  <td style="font-size:0.8rem">Internal Medicine (8 wks — DRRL pilot site) · Surgery (8 wks) · Pediatrics (6 wks) · OB/GYN (6 wks) · Psychiatry (6 wks) · Family Medicine (6 wks) · Neurology (4 wks) · EM (4 wks, Varies)</td>
+  <td><span class="tag tag-gray">NBME shelf (all)</span> <span class="tag tag-gray">OSCE mid-year</span> <span class="tag tag-p2">DRRL portfolio (IM)</span> <span class="tag tag-p2">Adversarial workshop</span> <span class="tag tag-gray">Attending eval</span></td>
+  <td><span class="tag tag-gray">Clinical reasoning</span> <span class="tag tag-gray">Patient management</span> <span class="tag tag-gray">DRRL documentation</span> <span class="tag tag-gray">AI error correction</span> <span class="tag tag-gray">RAG verification</span></td>
+  <td><div class="hl-box hl-amber" style="font-size:0.78rem;padding:0.6rem 0.75rem"><strong>DRRL (IM pilot) · RAG Audit · Discharge Safety Audit</strong>One DRRL per week minimum in IM. Attending reviews same-day. Prompt disclosure log appended to all AI-assisted discharge summaries.</div></td>
+</tr>
+<tr>
+  <td style="border-left:4px solid var(--p3m);background:var(--p3l)">
+    <span style="color:var(--p3m);font-weight:700;font-size:0.9rem">🎓 M4</span><br>
+    <span style="color:var(--muted);font-size:0.72rem">Months 37–48<br>Advanced Clinical</span>
+  </td>
+  <td><strong>Sub-internship, electives, and transition to residency.</strong> Students operate at near-intern level. AI-independent sub-internship performance documented. Mock AI Governance Board is the capstone — connecting UME completion to GME readiness and QI evidence for LCME.</td>
+  <td style="font-size:0.8rem">Sub-Internship (required · AI-independent reasoning documented) · Specialty Electives (Varies) · Critical Concepts / QI-PS · Transition to Residency · Research/Scholarly Project (Varies)</td>
+  <td><span class="tag tag-red">📋 USMLE Step 2 CK</span> <span class="tag tag-gray">Sub-I clinical eval</span> <span class="tag tag-p3">Mock governance rubric</span> <span class="tag tag-gray">QI project</span> <span class="tag tag-gray">EPA certification</span></td>
+  <td><span class="tag tag-gray">Intern-level autonomy</span> <span class="tag tag-gray">AI governance literacy</span> <span class="tag tag-gray">QI methodology</span> <span class="tag tag-gray">EPA-linked AI behaviors</span></td>
+  <td><div class="hl-box hl-green" style="font-size:0.78rem;padding:0.6rem 0.75rem"><strong>Mock AI Governance Board — M4 Capstone</strong>5-min QI case in QI-PS or Transition-to-Residency course. Panel: 2 faculty + 1 GME representative. Groups of 4–5 students. No new curriculum time. Faculty scoring ≥3/4.</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- AI MILESTONE DETAIL TAB -->
+<div id="t-ai" class="tp" style="overflow-x:auto">
+<p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.85rem">⚠ All AI milestones use synthetic, simulated, or approved de-identified cases in the pilot phase. No PHI enters any commercial LLM. Any future live clinical AI use requires institutional data governance, compliance review, and clinical partner approval. LCME element mapping requires liaison validation.</p>
+<table class="data-table">
+<thead><tr>
+  <th>Phase</th><th>Milestone</th><th>Clinical Context</th><th>What the Student Does</th><th>Required Artifact</th><th>Oversight</th><th>LCME · ACGME</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td style="color:var(--p1);font-weight:700;border-left:3px solid var(--p1)">M1<br><small style="color:var(--muted);font-weight:400">Semester 1</small></td>
+  <td><strong>AI Literacy Module</strong></td>
+  <td style="font-size:0.78rem">Informatics didactic — offline module, no PHI, no live LLM. Plug-in to existing informatics or ICM course.</td>
+  <td style="font-size:0.78rem">Complete 90-min module. Score ≥80% on 10-question quiz. Produce a 1-page concept map linking tokenization, embeddings, hallucination, RAG, bias, and privacy each to a distinct clinical failure mode.</td>
+  <td style="font-size:0.78rem">LMS quiz record + faculty-reviewed concept map</td>
+  <td><span class="tag tag-p1">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 6.3, 7.1<br>ACGME MK, PBLI-1</td>
+</tr>
+<tr>
+  <td style="color:var(--p1);font-weight:700;border-left:3px solid var(--p1)">M1<br><small style="color:var(--muted);font-weight:400">Year-round</small></td>
+  <td><strong>AI-Independent Differential</strong></td>
+  <td style="font-size:0.78rem">Preclinical case lab — proctored, AI-restricted. Lockdown browser or paper-based.</td>
+  <td style="font-size:0.78rem">Given a written vignette, generate a ranked differential of ≥5 conditions without AI access. ≥4/5 defensible per faculty key. Verbally defend each entry in a structured debrief using DEFT-AI structure.</td>
+  <td style="font-size:0.78rem">Handwritten differential + signed zero-AI-use attestation</td>
+  <td><span class="tag tag-p1">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 6.3, 7.1<br>ACGME MK, PBLI-1</td>
+</tr>
+<tr>
+  <td style="color:var(--p1m);font-weight:700;border-left:3px solid var(--p1m)">M2<br><small style="color:var(--muted);font-weight:400">Late M2 · GATE</small></td>
+  <td><strong>AI-Free Gate OSCE 🔒</strong></td>
+  <td style="font-size:0.78rem">Standalone gate assessment — new, designed specifically as a clerkship entry requirement. AI-restricted environment. Proctored.</td>
+  <td style="font-size:0.78rem">Complete a 20-minute standardized patient encounter (AI-restricted). Generate problem list and management plan for top problem. Pass mark ≥75%. Self-assessed confidence within 1 point of faculty rating. Discrepancy ≥2 points triggers longitudinal tracking note.</td>
+  <td style="font-size:0.78rem">SP checklist + problem list + management plan + self-assessment form + faculty rating + discrepancy report if applicable</td>
+  <td><span class="tag tag-p1">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 7.8, 8.1<br>ACGME PC-1, MK</td>
+</tr>
+<tr>
+  <td style="color:var(--p1m);font-weight:700;border-left:3px solid var(--p1m)">M2<br><small style="color:var(--muted);font-weight:400">Late M2</small></td>
+  <td><strong>Adversarial AI Debugging Workshop</strong></td>
+  <td style="font-size:0.78rem">Structured 2-hour session — simulation center. Synthetic de-identified cases only. Faculty-validated errors only — no unvalidated AI content used as teaching material.</td>
+  <td style="font-size:0.78rem">3 cases × 3 error types: (1) factual hallucination, (2) demographic/bias error, (3) RAG source mismatch. Identify ≥8/9 error combinations. Write refutation citing a peer-reviewed source or institutional guideline for each. Submit Workshop Error Report within 30 minutes.</td>
+  <td style="font-size:0.78rem">Workshop Error Report (3 annotated AI notes + source-cited refutations) + faculty rubric score</td>
+  <td><span class="tag tag-p1">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 6.3, 7.6<br>ACGME MK, PBLI-3</td>
+</tr>
+<tr>
+  <td style="color:var(--p2m);font-weight:700;border-left:3px solid var(--p2m)">M3<br><small style="color:var(--muted);font-weight:400">IM pilot · weekly</small></td>
+  <td><strong>Dual-Reasoning Reflection Log (DRRL)</strong></td>
+  <td style="font-size:0.78rem">Internal Medicine clerkship — inpatient admits, teaching ward. Pilot site: IM only. Minimum one DRRL per week (not every note). Faculty review time: ≤15 min per DRRL.</td>
+  <td style="font-size:0.78rem">Document independent differential and plan (handwritten, timestamped) before any AI output is displayed. Review AI recommendation. Complete DRRL: ≥2 items accepted with evidence citation, ≥1 modified or overridden with reasoning. File within 60 minutes of note submission. Attending countersign required.</td>
+  <td style="font-size:0.78rem">Handwritten pre-AI draft (timestamped) + completed DRRL + attending-countersigned note with AI disclosure section</td>
+  <td><span class="tag tag-p2">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 7.4, 7.6, 7.9<br>ACGME PC-1, MK, Prof-3, PBLI-3, SBP-4</td>
+</tr>
+<tr>
+  <td style="color:var(--p2m);font-weight:700;border-left:3px solid var(--p2m)">M3<br><small style="color:var(--muted);font-weight:400">Outpatient</small></td>
+  <td><strong>RAG Pipeline Audit</strong></td>
+  <td style="font-size:0.78rem">Primary care clerkship — chronic disease follow-up. Approved synthetic or institutionally governed learning environment. Not live EHR AI in pilot phase.</td>
+  <td style="font-size:0.78rem">Document independent risk assessment (≤15 min) before AI output. Audit ≥2 RAG source citations from AI recommendation — verify each is retrievable, current, and clinically applicable to this patient's demographics. If race-based correction factor present, document clinical appropriateness with explicit reasoning. Preceptor co-signs same session.</td>
+  <td style="font-size:0.78rem">Pre-visit independent assessment + RAG audit checklist (≥2 sources verified) + race-based algorithm analysis + co-signed note</td>
+  <td><span class="tag tag-p2">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 7.4, 7.6<br>ACGME PC-1, MK, PBLI-3</td>
+</tr>
+<tr>
+  <td style="color:var(--p2m);font-weight:700;border-left:3px solid var(--p2m)">M3–M4<br><small style="color:var(--muted);font-weight:400">Inpatient</small></td>
+  <td><strong>Discharge Summary Safety Audit</strong></td>
+  <td style="font-size:0.78rem">Inpatient discharge planning — supervised clerkship. Uses approved EHR simulation environment or institutional AI scribe only. Not live clinical EHR AI in pilot phase.</td>
+  <td style="font-size:0.78rem">Use approved AI scribe or simulation environment to draft discharge summary. Review draft and flag ≥1 hallucinated or incorrect element using Hallucination Incident Report form. Correct all flagged elements with EHR simulation source citations. Append prompt disclosure log (model name, exact prompt, verification steps). Zero uncorrected AI errors in final submitted note.</td>
+  <td style="font-size:0.78rem">AI draft (unedited, preserved) + Hallucination Incident Report + corrected final note + prompt disclosure log + attending countersignature</td>
+  <td><span class="tag tag-p2">Direct</span></td>
+  <td style="font-size:0.75rem">LCME 7.4, 7.9<br>ACGME Prof-3, SBP-4, PC-4</td>
+</tr>
+<tr>
+  <td style="color:var(--p3m);font-weight:700;border-left:3px solid var(--p3m)">M4<br><small style="color:var(--muted);font-weight:400">Capstone</small></td>
+  <td><strong>Mock AI Governance Board</strong></td>
+  <td style="font-size:0.78rem">QI-PS or Transition to Residency course — no new curriculum time. Student groups of 4–5. Panel: 2 faculty + 1 GME representative. Session: 15 min per group.</td>
+  <td style="font-size:0.78rem">Present a 5-minute QI case report: one real AI tool error (or faculty-approved simulation), patient impact analysis, corrective action taken, proposed system-level mitigation. Faculty scoring ≥3/4 on structured rubric required. Connects to ACGME SBP-4 and AAMC EPA 7.</td>
+  <td style="font-size:0.78rem">QI case slides + faculty rubric + AI Safety Incident Report (completed or simulated)</td>
+  <td><span class="tag tag-p3">Governance Panel</span></td>
+  <td style="font-size:0.75rem">LCME 7.4, 7.9<br>ACGME SBP-1,4, PBLI-4, Prof-1</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ASSESSMENT SCHEDULE TAB -->
+<div id="t-assess" class="tp" style="overflow-x:auto">
+<table class="data-table">
+<thead><tr><th>Timing</th><th>Assessment</th><th>Type</th><th>AI Component</th><th>Purpose / LCME Relevance</th></tr></thead>
+<tbody>
+<tr><td style="color:var(--p1);font-weight:600">M1 — Sem 1</td><td>AI Literacy Module Quiz + Concept Map</td><td>Proctored quiz + artifact</td><td><span class="tag tag-p1">Formative — AI knowledge</span></td><td>Establishes conceptual AI foundation before any clinical AI exposure. Feeds LCME 6.3 learning objective documentation.</td></tr>
+<tr><td style="color:var(--p1);font-weight:600">M1 — Year-round</td><td>ICM Clinical Skills OSCE (AI-free)</td><td>Direct observation</td><td><span class="tag tag-green">AI-Free Zone</span></td><td>Documents AI-independent reasoning baseline. LCME 7.8, 8.1. Longitudinal tracking anchors calibration data.</td></tr>
+<tr><td style="color:var(--p1);font-weight:600">M1–M2 — Ongoing</td><td>System NBME Formative Assessments</td><td>Written, proctored</td><td><span class="tag tag-green">AI-Free Zone</span></td><td>Knowledge benchmark; feeds Step 1 readiness tracking. LCME 8.1.</td></tr>
+<tr><td style="color:var(--p1m);font-weight:600">Late M2</td><td>Adversarial AI Debugging Workshop</td><td>Proctored case audit</td><td><span class="tag tag-amber">Adversarial AI</span></td><td>Error detection competency. Same rubric across all sites — LCME comparability evidence. LCME 6.3, 7.6.</td></tr>
+<tr><td style="color:var(--red);font-weight:700">M2 — End</td><td>🔒 USMLE Step 1</td><td>National licensing exam</td><td><span class="tag tag-green">AI-Free (mandated)</span></td><td>AI-independent performance benchmark. The AI-free gate OSCE is designed specifically to predict and support Step 1 performance.</td></tr>
+<tr><td style="color:var(--p1);font-weight:700">M2 — End</td><td>🔒 AI-Free Gate OSCE (standalone — new)</td><td>Proctored SP OSCE</td><td><span class="tag tag-green">AI-Free — required gate</span></td><td>Must pass (≥75%) before AI-integrated clerkship access. Documents AI-independent baseline for every student entering M3. LCME 8.1.</td></tr>
+<tr><td style="color:var(--p2m);font-weight:600">M3 — Each IM block</td><td>DRRL Portfolio (IM clerkship pilot)</td><td>Artifact portfolio — 1 per week min</td><td><span class="tag tag-p2">AI-Supervised — required</span></td><td>Signature AI assessment artifact. Same rubric across all IM sites — LCME comparability. Attending chart audit. LCME 7.4, 8.1.</td></tr>
+<tr><td style="color:var(--p2m);font-weight:600">M3 — Each clerkship</td><td>NBME Shelf Exams</td><td>Written, proctored</td><td><span class="tag tag-green">AI-Free</span></td><td>Subject knowledge; clerkship comparability. LCME 8.1.</td></tr>
+<tr><td style="color:var(--p2m);font-weight:600">M3 — One session</td><td>Adversarial AI Workshop (full version)</td><td>Proctored simulation</td><td><span class="tag tag-p2">Adversarial AI</span></td><td>Gate for M4 advancement. Error-detection rate logged for CQI dashboard. LCME 7.9.</td></tr>
+<tr><td style="color:var(--p3m);font-weight:600">M4 — Capstone</td><td>Mock AI Governance Board Presentation</td><td>QI presentation + rubric</td><td><span class="tag tag-p3">Governance AI</span></td><td>EPA 7 linkage; GME readiness evidence; feeds CQI dashboard. LCME 7.4, ACGME SBP-4.</td></tr>
+<tr><td style="color:var(--red);font-weight:700">M4 — Varies</td><td>🔒 USMLE Step 2 CK</td><td>National licensing exam</td><td><span class="tag tag-green">AI-Free (mandated)</span></td><td>Graduation requirement. AI-independent competency verification at senior clinical level.</td></tr>
+<tr><td style="color:var(--p3m);font-weight:600">M4 — Graduation</td><td>EPA Certification Review</td><td>Entrustment decision</td><td><span class="tag tag-p3">AI behaviors mapped</span></td><td>All 13 AAMC EPAs assessed. AI-related behaviors flagged for GME handoff. See EPA Mapping section.</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- WHAT CHANGES WHEN TAB -->
+<div id="t-shifts" class="tp">
+<div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+  <div class="shift-card" style="border-top:3px solid var(--p1)">
+    <div class="shift-icon">🧠→📋</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">Memorization → Clinical Reasoning</h4>
+    <div class="shift-from">M1: Recall facts reliably</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">M2–M3: Apply facts to patient scenarios independently</div>
+    <div class="shift-why">This shift must happen before AI enters in answer-delivery mode. If AI gets there first, the schemas never form. That is the never-skilling window — and the AI-free gate is the only structural protection we have.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--p1m)">
+    <div class="shift-icon">📖→🏥</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">Classroom → Bedside</h4>
+    <div class="shift-from">M1–M2: Lecture halls and labs</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">M3: Real patients, real uncertainty, AI tools present</div>
+    <div class="shift-why">The gate OSCE ensures students arrive at the bedside with documented AI-independent reasoning. Without it, students who learned alongside AI in M1–M2 have no verified baseline — and neither does the institution.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--p2m)">
+    <div class="shift-icon">❌🤖→✓🤖</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">AI Prohibited → AI Supervised</h4>
+    <div class="shift-from">M1–M2: AI forbidden in assessed tasks</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">M3: AI permitted only with completed DRRL</div>
+    <div class="shift-why">The DRRL is not paperwork. It is the only mechanism that produces a timestamped record of what the student thought before they saw what the AI thought. Without it, there is no evidence of reasoning — only evidence of a finished note.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--p2)">
+    <div class="shift-icon">📝→⚡</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">Writing Notes → Auditing AI Drafts</h4>
+    <div class="shift-from">M2: Writes standard clinical notes</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">M3: Audits AI draft, flags errors, appends disclosure log</div>
+    <div class="shift-why">AI documentation tools are already in EHRs. Students are already using them — with or without training. The discharge summary safety audit makes error-detection a graded clinical skill rather than an accidental discovery.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--p3m)">
+    <div class="shift-icon">🏥→🏛️</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">Patient Care → Systems Thinking</h4>
+    <div class="shift-from">M3: Managing this patient's problem</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">M4: Evaluating AI tools that affect every patient</div>
+    <div class="shift-why">The Mock Governance Board is not a simulation of leadership. It is the beginning of it. A physician who cannot evaluate an AI tool at the system level cannot lead a department or sit on a hospital committee in 2030.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--p3)">
+    <div class="shift-icon">📋→🎓</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">Student → Intern: Day-One Behaviors</h4>
+    <div class="shift-from">M4: Functions at near-intern level</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">PGY1: AI Disclosure Statements in ≥95% of daily notes</div>
+    <div class="shift-why">The UME-GME bridge is not optional. The 13 AAMC Core EPAs define what an entering resident must do. EPA 6 (clinical documentation) and EPA 7 (QI) directly require the AI behaviors this curriculum certifies. If UME does not prepare students for this, GME absorbs the cost.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--lsu-gold)">
+    <div class="shift-icon">👨‍🏫→🔍</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">Faculty as Content Authority → Faculty as Reasoning Supervisor</h4>
+    <div class="shift-from">Traditional: Faculty grades the clinical knowledge</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">AI era: Faculty grades whether the reasoning happened before the AI answer arrived</div>
+    <div class="shift-why">Faculty do not need to become AI engineers. They need three tools: a case, a rubric, and a 30-minute calibration. That is all. The train-the-trainer program builds this. It is a pre-condition for Phase 2, not an add-on.</div>
+  </div>
+  <div class="shift-card" style="border-top:3px solid var(--lsu-purple)">
+    <div class="shift-icon">📊→📈</div>
+    <h4 style="font-size:0.9rem;margin-bottom:0.25rem;font-family:'Lora',serif">LCME Compliance → LCME Evidence Generation</h4>
+    <div class="shift-from">Traditional: Curriculum designed to satisfy elements</div>
+    <div class="shift-arr">↓</div>
+    <div class="shift-to">AI era: Curriculum that produces CQI data as a byproduct</div>
+    <div class="shift-why">LCME does not reward good intentions. It rewards assessment archives, comparability data, and documented improvement cycles. Every DRRL, every workshop error report, every governance rubric becomes a data point in the self-study. This curriculum builds the archive while it teaches.</div>
+  </div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- AI THREAD SECTION -->
+<section id="ai-thread">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>The AI Integration Thread</h2>
+  <p>Four phases from M1 to PGY2 — a longitudinal structure, not a course addition.</p>
+</div>
+<div style="background:linear-gradient(135deg,var(--lsu-deep),var(--navy));border-radius:var(--r);padding:1.75rem;color:white;border:1px solid rgba(253,208,35,0.18);margin-bottom:1.5rem">
+  <h3 style="color:var(--lsu-gold);font-size:1.15rem;margin-bottom:0.4rem">Reasoning-First Medical AI Education Pilot</h3>
+  <p style="color:rgba(255,255,255,0.68);font-size:0.87rem;line-height:1.7;max-width:780px">This is not an AI curriculum. It is a clinical reasoning, patient safety, accreditation, and readiness-for-residency curriculum for an AI-mediated health system. The thread does not add a new course. It creates structured AI touchpoints across existing courses, clerkships, and the transition-to-residency experience — using three pilot points before any scale decision is made.</p>
+  <div class="grid-4" style="margin-top:1.25rem;gap:0.85rem">
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:0.6rem;padding:0.9rem">
+      <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--lsu-gold);margin-bottom:0.3rem">Phase 1 · M1–M2</div>
+      <div style="font-size:0.88rem;font-weight:700;color:white;margin-bottom:0.45rem">AI-Independent Baseline</div>
+      <ul style="list-style:none;font-size:0.75rem;color:rgba(255,255,255,0.65);display:flex;flex-direction:column;gap:0.25rem">
+        <li>· AI literacy module in Semester 1</li>
+        <li>· AI-free proctored assessments</li>
+        <li>· Adversarial case plug-in (late M2)</li>
+        <li>· Synthetic cases only — no PHI</li>
+        <li>· No commercial LLMs with patient data</li>
+      </ul>
+      <div style="margin-top:0.6rem;font-size:0.68rem;color:var(--lsu-gold);font-weight:600">🔒 Gate: AI-Free OSCE ≥75%</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:0.6rem;padding:0.9rem">
+      <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--lsu-gold);margin-bottom:0.3rem">Phase 2 · M3</div>
+      <div style="font-size:0.88rem;font-weight:700;color:white;margin-bottom:0.45rem">Adversarial Calibration</div>
+      <ul style="list-style:none;font-size:0.75rem;color:rgba(255,255,255,0.65);display:flex;flex-direction:column;gap:0.25rem">
+        <li>· DRRL — 1 per week in IM pilot</li>
+        <li>· RAG audit in outpatient setting</li>
+        <li>· Discharge summary safety audit</li>
+        <li>· Adversarial workshop: ≥8/9 errors</li>
+        <li>· Attending countersign required</li>
+      </ul>
+      <div style="margin-top:0.6rem;font-size:0.68rem;color:var(--lsu-gold);font-weight:600">🔒 Gate: ≥8/9 errors · DRRL 100% in IM</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:0.6rem;padding:0.9rem">
+      <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--lsu-gold);margin-bottom:0.3rem">Phase 3 · M4</div>
+      <div style="font-size:0.88rem;font-weight:700;color:white;margin-bottom:0.45rem">Governance &amp; Transition</div>
+      <ul style="list-style:none;font-size:0.75rem;color:rgba(255,255,255,0.65);display:flex;flex-direction:column;gap:0.25rem">
+        <li>· Mock AI Governance Board (QI-PS course)</li>
+        <li>· 5-min QI case: real error + mitigation</li>
+        <li>· Panel: 2 faculty + 1 GME rep</li>
+        <li>· Groups of 4–5 · 15 min per group</li>
+        <li>· EPA-linked behaviors certified</li>
+      </ul>
+      <div style="margin-top:0.6rem;font-size:0.68rem;color:var(--lsu-gold);font-weight:600">🔒 Gate: Faculty rubric ≥3/4</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:0.6rem;padding:0.9rem">
+      <div style="font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--lsu-gold);margin-bottom:0.3rem">GME Bridge · PGY1–PGY2</div>
+      <div style="font-size:0.88rem;font-weight:700;color:white;margin-bottom:0.45rem">Supervised Integration</div>
+      <ul style="list-style:none;font-size:0.75rem;color:rgba(255,255,255,0.65);display:flex;flex-direction:column;gap:0.25rem">
+        <li>· AI Disclosure Statements ≥95% of notes</li>
+        <li>· 15-min escalation hard stop (IM + EM)</li>
+        <li>· Medication reconciliation safety log</li>
+        <li>· Governance committee participation</li>
+        <li>· Annual AI-restricted assessment</li>
+      </ul>
+      <div style="margin-top:0.6rem;font-size:0.68rem;color:var(--lsu-gold);font-weight:600">🔒 Gate: ACGME SBP-4 milestone</div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- GME + FACULTY SECTION -->
+<section id="gme" style="background:white">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>GME Integration &amp; Faculty Development</h2>
+  <p>Internal Medicine and Emergency Medicine residents in PGY1–PGY2. Faculty train-the-trainer program built from scratch through a new AI Education Working Group.</p>
+</div>
+
+<div class="grid-2" style="gap:1.5rem;margin-bottom:1.5rem">
+<!-- GME IM -->
+<div class="gme-card">
+  <div style="padding-bottom:0.75rem;margin-bottom:0.75rem;border-bottom:1px solid var(--border)">
+    <span class="tag tag-p2" style="margin-bottom:0.35rem;display:inline-block">PGY1–PGY2 · Internal Medicine</span>
+    <h3 style="font-size:1.05rem;font-family:'Lora',serif">IM Resident AI Milestones</h3>
+    <p style="font-size:0.78rem;color:var(--muted)">Highest volume of AI-influenced clinical decisions. First GME pilot site.</p>
+  </div>
+  <div class="gme-milestone-row">
+    <div class="gme-dot" style="background:var(--p2m)"></div>
+    <div class="gme-milestone-text">
+      <strong>Daily Rounds — AI Disclosure Statement</strong>
+      <span>Verbalize independent assessment before AI recommendation is displayed to the team. Document AI Disclosure Statement (≤2 sentences) in ≥95% of daily notes during any 2-week audit. ≥1 meaningful override per week with attending-validated reasoning. Zero-override across ≥10 cases triggers mandatory attending debrief — treated as a teaching moment, not a disciplinary one.</span>
+    </div>
+  </div>
+  <div class="gme-milestone-row">
+    <div class="gme-dot" style="background:var(--p2m)"></div>
+    <div class="gme-milestone-text">
+      <strong>Medication Reconciliation Safety Log</strong>
+      <span>Obtain independent medication history before viewing AI-reconciled list. Document ≥1 discrepancy or explicit concordance statement. High-risk drugs (anticoagulants, insulin, narrow-TI agents): escalate to attending pharmacist within 30 minutes. 100% of admits with ≥5 medications during any 30-day audit window.</span>
+    </div>
+  </div>
+  <div class="gme-milestone-row">
+    <div class="gme-dot" style="background:var(--p2m)"></div>
+    <div class="gme-milestone-text">
+      <strong>AI Governance Committee Participation</strong>
+      <span>≥2 committee meetings per year. ≥1 Responsible Use Checklist completed for a tool used on their service. ≥1 QI case presentation: real AI error, patient impact, corrective action, system mitigation. Faculty scoring ≥3/4. Documents ACGME SBP-4 milestone.</span>
+    </div>
+  </div>
+  <div class="gme-milestone-row" style="border-bottom:none">
+    <div class="gme-dot" style="background:var(--p2m)"></div>
+    <div class="gme-milestone-text">
+      <strong>Annual AI-Independent Assessment (De-Skilling Surveillance)</strong>
+      <span>Annual AI-restricted case assessment for all IM residents. Results are confidential and used for educational planning only — not as performance evaluation. Tracks whether AI-assisted training is eroding independent diagnostic accuracy over time. Documented for GME program evaluation.</span>
+    </div>
+  </div>
+</div>
+
+<!-- GME EM -->
+<div class="gme-card">
+  <div style="padding-bottom:0.75rem;margin-bottom:0.75rem;border-bottom:1px solid var(--border)">
+    <span class="tag tag-red" style="margin-bottom:0.35rem;display:inline-block">PGY1–PGY2 · Emergency Medicine</span>
+    <h3 style="font-size:1.05rem;font-family:'Lora',serif">EM Resident AI Milestones</h3>
+    <p style="font-size:0.78rem;color:var(--muted)">Highest AI alert density. Sepsis models, deterioration scores, and triage algorithms are live in the EM workflow.</p>
+  </div>
+  <div class="gme-milestone-row">
+    <div class="gme-dot" style="background:var(--red)"></div>
+    <div class="gme-milestone-text">
+      <strong>Sepsis Alert Escalation Protocol (15-Minute Hard Stop)</strong>
+      <span>On receiving a CDS sepsis alert: document independent Sepsis-3 assessment within 15 minutes (HR, RR, temp, WBC, lactate, mental status, BP). Estimate personal probability (low/medium/high) and intended action. If assessment conflicts with alert severity, notify attending within 10 minutes and document conflict explicitly. No management action based on AI alert without bedside assessment.</span>
+    </div>
+  </div>
+  <div class="gme-milestone-row">
+    <div class="gme-dot" style="background:var(--red)"></div>
+    <div class="gme-milestone-text">
+      <strong>Triage AI Audit</strong>
+      <span>For AI-assisted triage recommendations: document independent acuity assessment before viewing AI suggestion. If AI triage level differs from clinical assessment by ≥1 level, document rationale for accepted or overridden recommendation. 30-day audit of concordance rates reviewed by EM program director.</span>
+    </div>
+  </div>
+  <div class="gme-milestone-row">
+    <div class="gme-dot" style="background:var(--red)"></div>
+    <div class="gme-milestone-text">
+      <strong>Alert Fatigue Documentation</strong>
+      <span>Residents track and report instances where AI alert frequency contributed to a near-miss or inappropriate dismissal of a valid alert. Reports submitted through existing patient safety infrastructure. Aggregated quarterly for program director review. Equity lens: sepsis model may under-alert for patients with atypical presentations — residents briefed at orientation.</span>
+    </div>
+  </div>
+  <div class="gme-milestone-row" style="border-bottom:none">
+    <div class="gme-dot" style="background:var(--red)"></div>
+    <div class="gme-milestone-text">
+      <strong>AI-Restricted Resuscitation Drill (Annual)</strong>
+      <span>Annual simulation where AI decision support tools are deliberately disabled. Residents demonstrate independent resuscitation decision-making (ACLS algorithms, medication calculations, differential generation) without AI assistance. Ensures clinical resilience when technology fails.</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Escalation flow -->
+<div style="margin-bottom:1.5rem">
+<h3 style="font-size:1rem;font-family:'Lora',serif;margin-bottom:0.75rem;color:var(--navy)">EM Sepsis Alert — 15-Minute Escalation Protocol (Visualized)</h3>
+<div class="escalation-flow">
+  <div class="ef-step">
+    <div class="ef-step-num" style="background:var(--p2m)">1</div>
+    <strong>Alert Fires</strong>
+    <span>AI sepsis alert triggers in EHR</span>
+  </div>
+  <div class="ef-step">
+    <div class="ef-step-num" style="background:var(--p2m)">2</div>
+    <strong>Bedside Assessment</strong>
+    <span>Independent clinical assessment within 15 minutes — documented in EHR with timestamp</span>
+  </div>
+  <div class="ef-step">
+    <div class="ef-step-num" style="background:var(--p2m)">3</div>
+    <strong>Compare</strong>
+    <span>Resident estimates own probability vs. AI alert severity</span>
+  </div>
+  <div class="ef-step">
+    <div class="ef-step-num" style="background:var(--green)">4a</div>
+    <strong>Concordant</strong>
+    <span>Document concordance. Proceed with plan. Attending informed per standard supervision.</span>
+  </div>
+  <div class="ef-step">
+    <div class="ef-step-num" style="background:var(--redm)">4b</div>
+    <strong>Discordant</strong>
+    <span>Notify attending within 10 minutes. Document conflict explicitly. No unilateral management without attending approval.</span>
+  </div>
+  <div class="ef-step ef-alert">
+    <div class="ef-step-num" style="background:var(--red)">⚠</div>
+    <strong>Hard Stop Violation</strong>
+    <span>Management without bedside assessment OR failure to escalate discordance → mandatory safety review</span>
+  </div>
+</div>
+</div>
+
+<!-- FACULTY SECTION -->
+<div style="margin-bottom:1.5rem">
+<h3 style="font-size:1.1rem;font-family:'Lora',serif;margin-bottom:0.85rem;color:var(--navy)">Faculty Development — AI Education Working Group (Built from Scratch)</h3>
+<div class="hl-box hl-amber" style="margin-bottom:1rem">
+  <strong>The faculty gap is the biggest implementation risk</strong>
+  Nationally, approximately 9% of medical faculty report meaningful AI expertise (Ke et al. 2026 — estimate; LSU figure unknown). Faculty do not need to become AI engineers. They need three things: a clinically validated case, a clear rubric, and one 30-minute calibration session. The train-the-trainer program builds exactly this — and nothing more.
+</div>
+
+<div class="grid-2" style="gap:1.25rem;margin-bottom:1.25rem">
+<div class="card" style="padding:1.25rem">
+  <h4 style="font-size:0.95rem;font-family:'Lora',serif;margin-bottom:0.75rem">AI Education Working Group Structure</h4>
+  <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.75rem">Not a committee. A small, action-oriented group that designs, validates, and evaluates the pilot. Built in parallel with the Faculty Development Office — not through it.</p>
+  <div style="display:flex;flex-direction:column;gap:0.45rem">
+    <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.82rem">
+      <span style="color:var(--lsu-gold);font-weight:700;flex-shrink:0">Lead:</span>
+      <span>Proposal author — design, mapping, evaluation, CQI dashboard</span>
+    </div>
+    <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.82rem">
+      <span style="color:var(--lsu-gold);font-weight:700;flex-shrink:0">UME:</span>
+      <span>Associate Dean for UME / Curriculum Committee representative — curricular approval and clerkship fit</span>
+    </div>
+    <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.82rem">
+      <span style="color:var(--lsu-gold);font-weight:700;flex-shrink:0">GME:</span>
+      <span>DIO or GME education leader — resident readiness and EPA linkage</span>
+    </div>
+    <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.82fm">
+      <span style="color:var(--lsu-gold);font-weight:700;flex-shrink:0">Clinical:</span>
+      <span>IM clerkship director + EM program director — case validation and site oversight</span>
+    </div>
+    <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.82rem">
+      <span style="color:var(--lsu-gold);font-weight:700;flex-shrink:0">Compliance:</span>
+      <span>Privacy / IT / compliance officer — tool boundaries and PHI rules</span>
+    </div>
+    <div style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.82rem">
+      <span style="color:var(--lsu-gold);font-weight:700;flex-shrink:0">Student:</span>
+      <span>Two MS3 or MS4 representatives — feasibility feedback and student voice</span>
+    </div>
+  </div>
+</div>
+<div class="card" style="padding:1.25rem">
+  <h4 style="font-size:0.95rem;font-family:'Lora',serif;margin-bottom:0.75rem">Target: 3 Faculty Per Department — What They Need to Do</h4>
+  <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.75rem">The train-the-trainer program certifies faculty to run three specific tasks — nothing broader.</p>
+  <div style="display:flex;flex-direction:column;gap:0.5rem">
+    <div class="hl-box hl-purple" style="padding:0.55rem 0.7rem;font-size:0.78rem">
+      <strong>Task 1: Run an adversarial AI debugging session</strong>
+      Select from library of pre-validated cases. Facilitate student critique. Score Workshop Error Reports against standardized rubric. Time burden: ≤30 min per session.
+    </div>
+    <div class="hl-box hl-amber" style="padding:0.55rem 0.7rem;font-size:0.78rem">
+      <strong>Task 2: Review and countersign DRRLs</strong>
+      Read independent plan, review DRRL, confirm that reasoning preceded AI comparison. Time burden: ≤15 min per DRRL. Minimum one per student per week in IM pilot.
+    </div>
+    <div class="hl-box hl-blue" style="padding:0.55rem 0.7rem;font-size:0.78rem">
+      <strong>Task 3: Apply the DEFT-AI supervisory framework</strong>
+      When observing incidental AI use: Diagnosis (what was used), Evidence (how output was verified), Feedback (on AI engagement), Teaching (appropriate use), Recommendation (future guidance). Time burden: 5 min per encounter.
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Faculty Workload Table -->
+<h4 style="font-size:0.95rem;font-family:'Lora',serif;margin-bottom:0.65rem;color:var(--navy)">Faculty Time Burden by Component — Before Presenting This to Clinical Faculty</h4>
+<div style="overflow-x:auto">
+<table class="wl-table">
+<thead><tr><th>Curriculum Component</th><th>Faculty Time Per Session</th><th>Frequency</th><th>Annual Total per Faculty</th><th>Implementation Strategy</th><th>Burden Level</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>MS1 AI Literacy Module</strong></td>
+  <td>0 min (student self-directed module)</td>
+  <td>Concept map review: once per semester per group</td>
+  <td>~1 hour total per semester cohort</td>
+  <td>Asynchronous student module + 30-min small-group debrief. Plug-in to existing informatics or ICM session.</td>
+  <td><span class="burden-low">Low</span></td>
+</tr>
+<tr>
+  <td><strong>MS2 Adversarial AI Case</strong></td>
+  <td>≤30 min per session</td>
+  <td>Once per M2 cohort (one session)</td>
+  <td>~30 min per faculty (3 reusable cases; validated once, used repeatedly)</td>
+  <td>Pre-built cases from library. Rubric-driven scoring. No AI expertise required — only clinical validation of errors.</td>
+  <td><span class="burden-low">Low–Moderate</span></td>
+</tr>
+<tr>
+  <td><strong>MS3 DRRL Review (IM pilot)</strong></td>
+  <td>≤15 min per DRRL</td>
+  <td>1 per student per week in IM rotation</td>
+  <td>Attending with 1 student: ~1 hr/week. Attending with 2 students: ~2 hrs/week.</td>
+  <td>Integrated into existing note review workflow. Countersignature is part of supervision, not an addition to it. Minimum frequency: 1 per week per student — not every note.</td>
+  <td><span class="burden-low">Low–Moderate</span></td>
+</tr>
+<tr>
+  <td><strong>MS4 Governance Board Panel</strong></td>
+  <td>15 min per student group of 4–5</td>
+  <td>Once per MS4 cohort</td>
+  <td>~1–2 hours per year per faculty panelist</td>
+  <td>Panel of 2 faculty + 1 GME rep. Groups of 4–5. Fits inside existing QI-PS course. No additional curriculum time.</td>
+  <td><span class="burden-low">Low–Moderate</span></td>
+</tr>
+<tr>
+  <td><strong>Faculty Calibration (annual)</strong></td>
+  <td>30 min (once per year)</td>
+  <td>Annual recalibration session</td>
+  <td>30 min per faculty</td>
+  <td>Group session. Reviews rubric updates, new case library additions, CQI data from prior year. Replaces one existing faculty development session.</td>
+  <td><span class="burden-low">Low</span></td>
+</tr>
+<tr>
+  <td><strong>DEFT-AI Supervisory Moments</strong></td>
+  <td>5 min per observed AI interaction</td>
+  <td>Opportunistic — when AI use is observed</td>
+  <td>Variable; not mandated</td>
+  <td>Converts incidental AI encounters into teaching moments. No scheduling, no new sessions. Requires DEFT-AI framework familiarity only.</td>
+  <td><span class="burden-low">Low</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EPA MAPPING SECTION -->
+<section id="epa">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>All 13 AAMC Core EPAs — AI Behavior Mapping</h2>
+  <p>The UME-GME bridge in one table. Every EPA that an entering resident must demonstrate has an AI behavior attached to it. This is what "readiness-for-residency" means in an AI-mediated clinical environment.</p>
+</div>
+<div class="hl-box hl-gold" style="margin-bottom:1rem">
+  The AAMC Core EPAs define 13 activities expected of all students entering residency. EPA integration of AI integration at the supervised collaboration level should be treated as a structural hypothesis requiring institution-level pilot study and should not assume EPA implementation fidelity until validated (Ke et al. 2026). This mapping is proposed, not established.
+</div>
+<div style="overflow-x:auto">
+<table class="epa-table">
+<thead><tr>
+  <th style="width:80px">EPA</th><th>Activity</th><th>AI Behavior Required</th><th>UME Milestone That Prepares It</th><th>GME Milestone That Extends It</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td class="epa-num">EPA 1</td>
+  <td><strong>Gather history and perform physical examination</strong></td>
+  <td style="font-size:0.78rem">Document independent H&amp;P without AI assistance. When AI tools are present, produce independent assessment first (timestamped). Recognize when AI-generated history summaries omit patient-reported information or SDOH context.</td>
+  <td style="font-size:0.78rem">M1 ICM OSCE (AI-free) · M2 AI-free Gate OSCE · DRRL independent plan step</td>
+  <td style="font-size:0.78rem">AI Disclosure Statement in daily notes · Independent bedside assessment before alert action</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 2</td>
+  <td><strong>Prioritize a differential diagnosis</strong></td>
+  <td style="font-size:0.78rem">Generate independent differential before viewing AI recommendation. Document where AI differential diverges from independent reasoning and why. Identify demographic bias in AI-generated differentials (e.g., ACS missed in atypical presentations).</td>
+  <td style="font-size:0.78rem">M1 AI-independent differential · M2 adversarial case (demographic bias error type) · M3 DRRL</td>
+  <td style="font-size:0.78rem">Override logging · Weekly attending-validated divergence documentation</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 3</td>
+  <td><strong>Recommend and interpret diagnostic tests</strong></td>
+  <td style="font-size:0.78rem">Interpret diagnostic results independently before viewing AI interpretation. Audit AI-cited evidence for diagnostic recommendations — verify source currency and applicability. Recognize when AI anchors on incomplete data.</td>
+  <td style="font-size:0.78rem">M3 RAG pipeline audit · DRRL evidence-cited override · Discharge summary correction with source citation</td>
+  <td style="font-size:0.78rem">EM triage AI audit · 30-day concordance tracking</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 4</td>
+  <td><strong>Enter and discuss orders and prescriptions</strong></td>
+  <td style="font-size:0.78rem">No AI-generated order is placed without physician review and documented rationale. High-risk medication orders (anticoagulants, insulin, narrow-TI agents) require independent verification against AI-reconciled list before entry.</td>
+  <td style="font-size:0.78rem">M3 Discharge summary safety audit · DRRL override documentation</td>
+  <td style="font-size:0.78rem">Medication reconciliation safety log (100% of ≥5-medication admits) · 30-minute high-risk escalation</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 5</td>
+  <td><strong>Document clinical encounters</strong></td>
+  <td style="font-size:0.78rem">All AI-assisted documentation carries an AI Disclosure Statement. Prompt disclosure log appended to all AI-drafted notes. Hallucination Incident Report filed when AI draft contains clinical errors. Zero uncorrected AI errors in the patient record.</td>
+  <td style="font-size:0.78rem">M3 DRRL · Discharge summary safety audit · Prompt disclosure log</td>
+  <td style="font-size:0.78rem">AI Disclosure Statements in ≥95% of notes · Monthly audit report to program director</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 6</td>
+  <td><strong>Provide oral presentations</strong></td>
+  <td style="font-size:0.78rem">Clinical presentations delivered from independent reasoning, not AI-generated summaries. When AI is used to synthesize case data, student must be able to identify what the AI contributed and where their own clinical judgment diverges.</td>
+  <td style="font-size:0.78rem">M1–M2 AI-free case defenses and vivas · DRRL pre-AI plan serves as independent reasoning documentation</td>
+  <td style="font-size:0.78rem">Daily rounds verbal assessment before AI display to team · Independent assessment verbalized first</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 7</td>
+  <td><strong>Form clinical questions and retrieve evidence</strong></td>
+  <td style="font-size:0.78rem">Verify AI-cited references: confirm each is retrievable, current, and supports the specific claim made. Recognize RAG source mismatch (AI cites outdated or contextually inapplicable source). Do not accept AI evidence summaries without primary source verification.</td>
+  <td style="font-size:0.78rem">M2 adversarial case (RAG mismatch error type) · M3 RAG pipeline audit (≥2 sources verified per recommendation)</td>
+  <td style="font-size:0.78rem">Override documentation with peer-reviewed citation · QI case evidence base in governance presentation</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 8</td>
+  <td><strong>Give or receive patient handover</strong></td>
+  <td style="font-size:0.78rem">AI-generated handover summaries reviewed for accuracy before sign-out. Omissions in SDOH context (transportation, pharmacy access, language) flagged and corrected. Receiving physician alerted when AI summary was used and what verification was performed.</td>
+  <td style="font-size:0.78rem">M3 Discharge summary safety audit · Equity check: final note reviewed for SDOH omissions</td>
+  <td style="font-size:0.78rem">Disclosure of AI tool use in handover communications · Verification step documented</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 9</td>
+  <td><strong>Collaborate as part of an interprofessional team</strong></td>
+  <td style="font-size:0.78rem">Communicate AI tool use transparently to the clinical team. Inform pharmacists when AI medication reconciliation was used and what independent verification was performed. Recognize that AI recommendations affect team members who may not be aware AI was involved.</td>
+  <td style="font-size:0.78rem">M3 DRRL (attending countersign as team accountability mechanism) · Prompt disclosure log (team communication artifact)</td>
+  <td style="font-size:0.78rem">Pharmacist escalation protocol · Team-level AI disclosure on rounds</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 10</td>
+  <td><strong>Recognize a patient requiring urgent or emergent care</strong></td>
+  <td style="font-size:0.78rem">Perform independent clinical assessment of urgency before acting on AI triage or sepsis alerts. 15-minute bedside assessment hard stop. Recognize that AI models may under-alert for atypical presentations in marginalized populations. Clinical judgment overrides AI triage without penalty when documented.</td>
+  <td style="font-size:0.78rem">M3 adversarial workshop (hallucination error type includes urgent/emergent errors) · Gate OSCE clinical emergency scenarios</td>
+  <td style="font-size:0.78rem">EM sepsis alert escalation protocol · 15-min hard stop · Alert discordance documentation</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 11</td>
+  <td><strong>Obtain informed consent for procedures</strong></td>
+  <td style="font-size:0.78rem">Informed consent conversations led by physician, not AI-generated scripts. AI may draft consent language for review, but physician must be able to explain the procedure, risks, and alternatives independently. Patient has the right to know when AI contributed to their care plan.</td>
+  <td style="font-size:0.78rem">M1–M2 HIPAA and privacy scenario · Ethics and professionalism curriculum · AI literacy module (privacy, transparency)</td>
+  <td style="font-size:0.78rem">AI disclosure governance: patient notification policy (under development, committee mandate)</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 12</td>
+  <td><strong>Perform general procedures of a physician</strong></td>
+  <td style="font-size:0.78rem">Procedural skills developed and maintained without AI assistance. AI-restricted resuscitation drills (annual, EM) verify that procedural competence does not depend on AI guidance tools. This EPA is the clearest argument for AI-free simulation environments.</td>
+  <td style="font-size:0.78rem">M1–M2 AI-free clinical skills training · Gate OSCE (AI-restricted procedural assessment)</td>
+  <td style="font-size:0.78rem">Annual AI-restricted simulation drill (EM) · De-skilling surveillance documentation</td>
+</tr>
+<tr>
+  <td class="epa-num">EPA 13</td>
+  <td><strong>Identify system failures and contribute to safety and improvement</strong></td>
+  <td style="font-size:0.78rem">Report AI tool errors through institutional safety infrastructure. Complete Hallucination Incident Reports and AI Safety Incident Reports. Participate in AI Governance Committee. Present QI cases documenting AI errors and system-level mitigations. This EPA is the direct target of the Mock Governance Board capstone.</td>
+  <td style="font-size:0.78rem">M4 Mock AI Governance Board · QI case presentation · AI Safety Incident Report</td>
+  <td style="font-size:0.78rem">Governance Committee participation (≥2 meetings/year) · Responsible Use Checklist · QI milestone sign-off</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- COMPETENCY OVERLAY -->
+<section id="competencies" style="background:white">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>ACGME Competency Overlay</h2>
+  <p>Six domains mapped across all four years — showing where the AI thread strengthens each competency level and when it does so.</p>
+</div>
+<div class="cg">
+  <div class="cg-hd">Competency</div>
+  <div class="cg-hd">M1</div><div class="cg-hd">M2</div><div class="cg-hd">M3</div><div class="cg-hd">M4 + GME</div>
+
+  <div class="cg-label">🧠 Medical Knowledge</div>
+  <div class="cg-cell"><span class="lv lv-i">Intro</span><br>Biomedical foundations. AI literacy module defines hallucination and bias as clinical risks — not technical curiosities. Concept map is the first assessed AI knowledge artifact.</div>
+  <div class="cg-cell"><span class="lv lv-a">Apply</span><br>Pathophysiology applied to patient cases. Adversarial AI case tests whether students identify medically incorrect AI outputs across three failure-mode categories.</div>
+  <div class="cg-cell"><span class="lv lv-m">Master</span><br>Clinical reasoning in context. DRRL requires evidence-cited independent reasoning. RAG audit tests source-level medical knowledge at the point of AI recommendation.</div>
+  <div class="cg-cell"><span class="lv lv-l">Lead</span><br>Governance-level evaluation. Mock board tests whether students can assess AI tool accuracy at a system level and propose evidence-based mitigations. Extends into GME QI milestone.</div>
+
+  <div class="cg-label">🏥 Patient Care</div>
+  <div class="cg-cell"><span class="lv lv-i">Intro</span><br>H&amp;P fundamentals. AI-free SP encounters document the patient-care baseline before any AI tool exposure. Problem list and management plan produced independently.</div>
+  <div class="cg-cell"><span class="lv lv-a">Apply</span><br>Clinical case reasoning without AI. Adversarial case: catch AI errors before they influence patient care decisions. Gate OSCE verifies independent patient-care competency.</div>
+  <div class="cg-cell"><span class="lv lv-m">Master</span><br>Real patients, supervised. DRRL required: independent plan documented before AI display, attending countersign on every AI-assisted clinical note.</div>
+  <div class="cg-cell"><span class="lv lv-l">Lead</span><br>Near-intern autonomy. AI escalation protocols mastered in IM and EM. Medication reconciliation safety log demonstrates patient-safety orientation in high-risk scenarios.</div>
+
+  <div class="cg-label">🤝 Interpersonal &amp; Communication</div>
+  <div class="cg-cell"><span class="lv lv-i">Intro</span><br>Patient communication fundamentals. HIPAA and PHI scenario: what happens when a classmate puts patient data in a commercial LLM. Privacy as a communication competency.</div>
+  <div class="cg-cell"><span class="lv lv-a">Apply</span><br>Written clinical communication skills. Prompt disclosure logs and AI Disclosure Statements are communication artifacts — they tell the team what the physician contributed vs. what AI produced.</div>
+  <div class="cg-cell"><span class="lv lv-m">Master</span><br>Transparent AI communication with the clinical team. Discharge summary safety audit: the corrected note communicates physician judgment, not AI output, to downstream providers.</div>
+  <div class="cg-cell"><span class="lv lv-l">Lead</span><br>QI presentation to governance panel. Communicating AI errors and system-level mitigations to a multi-stakeholder audience — the communication competency that health system leadership requires.</div>
+
+  <div class="cg-label">⚖️ Professionalism</div>
+  <div class="cg-cell"><span class="lv lv-i">Intro</span><br>AI academic integrity policy signed at entry. Students understand that AI use in assessed tasks is an academic integrity violation in M1–M2 — not ambiguous, not case-by-case.</div>
+  <div class="cg-cell"><span class="lv lv-a">Apply</span><br>Zero-AI attestation on proctored exams. PHI violation scenario: professional obligation when a classmate crosses a boundary. Ethical reasoning applied to real AI dilemmas.</div>
+  <div class="cg-cell"><span class="lv lv-m">Master</span><br>Professional accountability for AI-assisted documentation. Attending countersign is not administrative — it signals that physician accountability is not transferred to the AI tool.</div>
+  <div class="cg-cell"><span class="lv lv-l">Lead</span><br>Governance participation as professional responsibility. Mock board and GME committee work establish the norm that physicians — not algorithms — are accountable for clinical decisions.</div>
+
+  <div class="cg-label">🔄 Practice-Based Learning</div>
+  <div class="cg-cell"><span class="lv lv-i">Intro</span><br>Calibrated self-assessment in ICM. Confidence discrepancy report when self-assessment diverges from faculty rating by ≥2 points — building metacognitive accuracy from day one.</div>
+  <div class="cg-cell"><span class="lv lv-a">Apply</span><br>Adversarial case teaches calibration: AI outputs can be confident and wrong simultaneously. This is metacognitive calibration training — the precondition for safe AI use.</div>
+  <div class="cg-cell"><span class="lv lv-m">Master</span><br>DRRL portfolio creates a longitudinal record of where student reasoning diverged from AI and why. Error detection rate tracked across multiple sessions — an actual learning curve.</div>
+  <div class="cg-cell"><span class="lv lv-l">Lead</span><br>QI methodology applied to AI tools. Mock board generates improvement evidence. GME annual assessment tracks de-skilling. Both feed the CQI dashboard as PBLI evidence.</div>
+
+  <div class="cg-label">🏛️ Systems-Based Practice</div>
+  <div class="cg-cell"><span class="lv lv-i">Intro</span><br>Healthcare system framing. AI governance landscape introduced — ACGME 2026–27 mandate context. Students understand why this curriculum exists, not just what it requires.</div>
+  <div class="cg-cell"><span class="lv lv-a">Apply</span><br>LCME accreditation context. LSU's existing AI policy as the system-level anchor. Adversarial case teaches that AI errors are system failures, not just individual mistakes.</div>
+  <div class="cg-cell"><span class="lv lv-m">Master</span><br>EHR AI alert navigation. RAG pipeline audit (system-level source evaluation). Escalation protocols embedded in real workflow, not taught as abstract theory.</div>
+  <div class="cg-cell"><span class="lv lv-l">Lead</span><br>Mock AI Governance Board directly meets ACGME SBP-4 (patient safety, QI). GME governance committee participation is the extension of this milestone into residency practice.</div>
+</div>
+<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem">
+  <span style="font-size:0.73rem;color:var(--muted)">Competency levels:</span>
+  <span class="lv lv-i">Intro — awareness and conceptual knowledge</span>
+  <span class="lv lv-a">Apply — supervised application</span>
+  <span class="lv lv-m">Master — independent performance with oversight</span>
+  <span class="lv lv-l">Lead — system-level governance</span>
+</div>
+</div>
+</section>
+
+<!-- CQI DASHBOARD SECTION -->
+<section id="cqi">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>CQI Dashboard — Evidence the Curriculum Generates for LCME</h2>
+  <p>LCME does not reward good intentions. It rewards evidence archives. Every metric below is produced as a natural byproduct of running this curriculum — not as a separate data collection exercise. Sliders show current baseline estimates; targets shown at right.</p>
+</div>
+<div class="hl-box hl-gold" style="margin-bottom:1.25rem">
+  <strong>Important framing for LCME conversations</strong>
+  "This creates evidence relevant to LCME expectations" — not "this ensures compliance." LCME standards and elements are official only through LCME sources. Final LCME mapping must be verified against the current LCME Functions and Structure document before formal submission. This dashboard is a planning tool, not an accreditation submission.
+</div>
+
+<div class="cqi-grid">
+  <div class="cqi-card">
+    <div class="cqi-card-label">DRRL Completion Rate (IM Pilot)</div>
+    <div class="cqi-card-val" id="cqi-val-drrl" style="color:var(--p2m)">0%</div>
+    <div class="cqi-card-sub">Pilot baseline · Target: ≥90% per week</div>
+    <input type="range" min="0" max="100" value="0" oninput="setCQI('drrl',this.value,'%','var(--p2m)')">
+    <div class="bar-wrap"><div class="bar-fill" id="cqi-bar-drrl" style="width:0%;background:var(--p2m)"></div></div>
+    <div class="cqi-target">LCME 7.4, 8.1 · Comparability evidence</div>
+  </div>
+  <div class="cqi-card">
+    <div class="cqi-card-label">Adversarial Error Detection Rate</div>
+    <div class="cqi-card-val" id="cqi-val-adv" style="color:var(--p1m)">0/9</div>
+    <div class="cqi-card-sub">Pre-training baseline · Target: ≥8/9</div>
+    <input type="range" min="0" max="9" value="0" oninput="setCQI('adv',this.value,'/9','var(--p1m)')">
+    <div class="bar-wrap"><div class="bar-fill" id="cqi-bar-adv" style="width:0%;background:var(--p1m)"></div></div>
+    <div class="cqi-target">LCME 6.3, 7.6 · Pre/post improvement tracked</div>
+  </div>
+  <div class="cqi-card">
+    <div class="cqi-card-label">Faculty Time per DRRL Review</div>
+    <div class="cqi-card-val" id="cqi-val-time" style="color:var(--green)">0 min</div>
+    <div class="cqi-card-sub">Observed average · Target: ≤15 min</div>
+    <input type="range" min="0" max="30" value="0" oninput="setCQI('time',this.value,' min','var(--green)')">
+    <div class="bar-wrap"><div class="bar-fill" id="cqi-bar-time" style="width:0%;background:var(--green)"></div></div>
+    <div class="cqi-target">Feasibility metric · Faculty burden evidence</div>
+  </div>
+  <div class="cqi-card">
+    <div class="cqi-card-label">PHI Incidents</div>
+    <div class="cqi-card-val" id="cqi-val-phi" style="color:var(--red)">0</div>
+    <div class="cqi-card-sub">Cumulative · Target: 0 at all times</div>
+    <input type="range" min="0" max="10" value="0" oninput="setCQI('phi',this.value,'','var(--red)')">
+    <div class="bar-wrap"><div class="bar-fill" id="cqi-bar-phi" style="width:0%;background:var(--red)"></div></div>
+    <div class="cqi-target">Compliance metric · Hard stop trigger</div>
+  </div>
+  <div class="cqi-card">
+    <div class="cqi-card-label">Student Usefulness Rating</div>
+    <div class="cqi-card-val" id="cqi-val-use" style="color:var(--p3m)">0%</div>
+    <div class="cqi-card-sub">Survey · Target: ≥80% favorable</div>
+    <input type="range" min="0" max="100" value="0" oninput="setCQI('use',this.value,'%','var(--p3m)')">
+    <div class="bar-wrap"><div class="bar-fill" id="cqi-bar-use" style="width:0%;background:var(--p3m)"></div></div>
+    <div class="cqi-target">LCME 8.1 · Student feedback documentation</div>
+  </div>
+  <div class="cqi-card">
+    <div class="cqi-card-label">Clerkship Site Comparability Score</div>
+    <div class="cqi-card-val" id="cqi-val-comp" style="color:var(--p4m)">0%</div>
+    <div class="cqi-card-sub">Rubric alignment across IM sites · Target: ≥90%</div>
+    <input type="range" min="0" max="100" value="0" oninput="setCQI('comp',this.value,'%','var(--p4m)')">
+    <div class="bar-wrap"><div class="bar-fill" id="cqi-bar-comp" style="width:0%;background:var(--p4m)"></div></div>
+    <div class="cqi-target">LCME comparability requirement · Key CQI metric</div>
+  </div>
+</div>
+
+<div style="margin-top:1.25rem;overflow-x:auto">
+<h4 style="font-size:0.9rem;font-family:'Lora',serif;margin-bottom:0.65rem;color:var(--navy)">Full CQI Evidence Map — What the Curriculum Produces for LCME Documentation</h4>
+<table class="data-table" style="font-size:0.79rem">
+<thead><tr><th>Metric</th><th>Data Source</th><th>Collection Frequency</th><th>Pilot Target</th><th>LCME / ACGME Relevance</th><th>Who Reviews</th></tr></thead>
+<tbody>
+<tr><td><strong>DRRL completion rate by clerkship site</strong></td><td>DRRL portfolio log</td><td>Weekly (during IM pilot)</td><td>≥90% per student per rotation</td><td>LCME 7.4 (clinical education), 8.1 (comparability)</td><td>Clerkship director + CQI dashboard</td></tr>
+<tr><td><strong>Adversarial error detection rate (pre/post)</strong></td><td>Workshop Error Reports</td><td>Per workshop session</td><td>Pre: baseline documented · Post: ≥8/9</td><td>LCME 6.3 (learning objectives), 7.6 (health disparities)</td><td>AI Education Working Group</td></tr>
+<tr><td><strong>AI-independent OSCE gate pass rate</strong></td><td>Gate OSCE scoring</td><td>End of M2 (annually)</td><td>≥75% first attempt</td><td>LCME 8.1 (student assessment)</td><td>Course director + assessment office</td></tr>
+<tr><td><strong>Faculty time burden per DRRL review</strong></td><td>Faculty survey + time log</td><td>Monthly (during pilot)</td><td>≤15 min average</td><td>Feasibility metric — faculty recruitment evidence</td><td>AI Education Working Group</td></tr>
+<tr><td><strong>PHI incidents via AI tools</strong></td><td>Compliance incident reports</td><td>Real-time + monthly aggregate</td><td>0 at all times</td><td>LCME 2.1 (learning environment) · Compliance requirement</td><td>Privacy officer + Dean's Office</td></tr>
+<tr><td><strong>Student usefulness rating</strong></td><td>Post-session survey</td><td>Per milestone</td><td>≥80% favorable</td><td>LCME 8.1 (student feedback) · CQI evidence</td><td>AI Education Working Group</td></tr>
+<tr><td><strong>Clerkship site comparability score</strong></td><td>Rubric completion audit</td><td>End of each clerkship block</td><td>≥90% same-rubric completion across sites</td><td>LCME 8.1 (comparability requirement)</td><td>Associate Dean for UME</td></tr>
+<tr><td><strong>AI override rate (GME)</strong></td><td>Override log + attending audit</td><td>Weekly per resident</td><td>≥1 documented override per resident per week</td><td>ACGME SBP-4 (patient safety) · De-skilling surveillance</td><td>Program director + GME office</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- STAKEHOLDER SECTION -->
+<section id="stakeholders" style="background:white">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>Stakeholder Assurance — Every Concern Answered Before It Is Asked</h2>
+  <p>For circulation to Associate Deans of UME and GME, Curriculum Committee, and compliance leadership — not for general distribution.</p>
+</div>
+<div style="overflow-x:auto">
+<table class="st-table">
+<thead><tr><th>Stakeholder</th><th>Their Real Concern</th><th>The Answer</th><th>Proof / Artifact</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong style="color:var(--navy)">Dean</strong></td>
+  <td><span class="concern-tag">Is this governable?</span><br><span style="font-size:0.77rem;color:var(--muted)">Who owns it, who approves it, what is the institutional risk if something goes wrong?</span></td>
+  <td style="font-size:0.82rem">Dean-sponsored, UME-owned, GME-linked, compliance-reviewed pilot. Three touchpoints only. No PHI, no live EHR AI, no new vendor. The proposal author leads design and evaluation. This is a pilot study, not a curriculum launch.</td>
+  <td><span class="answer-tag">90-day charter</span> <span class="answer-tag">This document</span></td>
+</tr>
+<tr>
+  <td><strong style="color:var(--navy)">Associate Dean, UME (Robin)</strong></td>
+  <td><span class="concern-tag">What gets removed?</span><br><span style="font-size:0.77rem;color:var(--muted)">The curriculum is already full. Who teaches this? What course owns it? Is it summative?</span></td>
+  <td style="font-size:0.82rem">Nothing gets removed in the pilot. Three plug-ins: (1) AI case in existing Pathology or ICM session, (2) DRRL in IM clerkship — 1 per week minimum, not every note, (3) Governance board in existing QI-PS course. Existing faculty with a case, a rubric, and a 30-minute calibration. Formative assessment first — no summative grade impact during pilot.</td>
+  <td><span class="answer-tag">Plug-in model</span> <span class="answer-tag">Faculty workload table</span></td>
+</tr>
+<tr>
+  <td><strong style="color:var(--navy)">Associate Dean, GME (Lee)</strong></td>
+  <td><span class="concern-tag">Will interns be ready?</span><br><span style="font-size:0.77rem;color:var(--muted)">What specific behaviors will graduating students demonstrate on day one of residency?</span></td>
+  <td style="font-size:0.82rem">Graduates will: reason before using AI (documented), verify AI output (DRRL and RAG audit), document AI use transparently (AI Disclosure Statements), identify system risk (governance capstone), escalate unsafe AI recommendations (escalation protocol). EPA-linked AI checklist provided at GME handoff for IM and EM programs specifically.</td>
+  <td><span class="answer-tag">EPA mapping (all 13)</span> <span class="answer-tag">AI-ready intern checklist</span></td>
+</tr>
+<tr>
+  <td><strong style="color:var(--navy)">Compliance / IT / Privacy</strong></td>
+  <td><span class="concern-tag">What about PHI?</span><br><span style="font-size:0.77rem;color:var(--muted)">Which tools? What data types? What are the approval triggers? Who is liable if a student enters patient data into an AI tool?</span></td>
+  <td style="font-size:0.82rem">Pilot uses synthetic or de-identified educational cases only. No commercial LLMs with patient-identifiable data. LSU's existing AI policy explicitly prohibits PHI in non-approved tools. Any future clinical AI use requires institutional data governance, compliance review, clinical partner approval, and IT security assessment. Green-yellow-red risk matrix available on request.</td>
+  <td><span class="answer-tag">Risk matrix</span> <span class="answer-tag">No new vendor required</span></td>
+</tr>
+<tr>
+  <td><strong style="color:var(--navy)">Clinical Faculty (IM + EM)</strong></td>
+  <td><span class="concern-tag">How much time?</span><br><span style="font-size:0.77rem;color:var(--muted)">Do I need to become an AI expert? How many more things will I need to do per day?</span></td>
+  <td style="font-size:0.82rem">Faculty need three things: a pre-validated case, a rubric, and one 30-minute calibration session. DRRL review adds ≤15 minutes per review, one per student per week. Adversarial session: ≤30 minutes total. Annual calibration: 30 minutes. DEFT-AI supervisory moments are opportunistic — no scheduling required. The Faculty Development Office is aware; the new AI Education Working Group coordinates delivery.</td>
+  <td><span class="answer-tag">Faculty workload table</span> <span class="answer-tag">Pre-built case library</span></td>
+</tr>
+<tr>
+  <td><strong style="color:var(--navy)">LCME Liaison</strong></td>
+  <td><span class="concern-tag">Which elements?</span><br><span style="font-size:0.77rum;color:var(--muted)">Where does this appear in the self-study? Have LCME standards been accurately interpreted?</span></td>
+  <td style="font-size:0.82rem">Proposed mapping to Elements 6.3, 7.1, 7.4, 7.6, 7.9 — pending liaison validation before any formal self-study citation. LCME-conservative language used throughout: "creates evidence relevant to LCME expectations" not "ensures compliance." Final mapping verified against current LCME Functions and Structure document.</td>
+  <td><span class="answer-tag">LCME mapping doc</span> <span class="answer-tag">⚠ Requires liaison validation</span></td>
+</tr>
+<tr>
+  <td><strong style="color:var(--navy)">Students</strong></td>
+  <td><span class="concern-tag">Is this fair?</span><br><span style="font-size:0.77rem;color:var(--muted)">Will AI restrictions put LSU students at a disadvantage compared to peers at other schools who use AI freely?</span></td>
+  <td style="font-size:0.82rem">The opposite. 77% of US schools have AI in required curriculum, but only 47% have a governance model. LSU students will graduate able to reason independently, detect AI errors, document AI use transparently, and participate in governance — the skills that will define employability in AI-mediated health systems. The restrictions in M1–M2 are not punitive; they are protective against never-skilling. Formative first in the pilot means no grade impact during testing.</td>
+  <td><span class="answer-tag">Formative-first pilot</span> <span class="answer-tag">National benchmarking data</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- PILOT PATHWAY -->
+<section id="pilot">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>90-Day Pilot Pathway</h2>
+  <p>The first step is not a 4-year rollout. It is a low-risk, evidence-generating pilot with three touchpoints — designed to test feasibility before any scale decision.</p>
+</div>
+<div class="pilot-steps">
+  <div class="pilot-step">
+    <div class="pilot-step-num" style="background:var(--lsu-purple)">0</div>
+    <h4>Pre-Launch · Days 1–30</h4>
+    <p>Name curricular owner per phase. Issue LLM privacy guidance. Update academic integrity policy for AI. Engage LCME liaison. Define compliance/IT risk boundaries. Convene AI Education Working Group (first meeting).</p>
+    <div class="pilot-tl">⚡ Dean's immediate actions</div>
+  </div>
+  <div class="pilot-step">
+    <div class="pilot-step-num" style="background:var(--p1)">1</div>
+    <h4>Working Group Build · Days 31–60</h4>
+    <p>Build adversarial AI case for M2 (validated by 1 clinician + 1 informaticist). Design DRRL template for IM. Draft faculty calibration guide (≤2 pages). Confirm IM clerkship director participation. Map EPA linkages.</p>
+    <div class="pilot-tl">🏗 Content build + validation</div>
+  </div>
+  <div class="pilot-step">
+    <div class="pilot-step-num" style="background:var(--p2m)">2</div>
+    <h4>Faculty Calibration · Days 46–75</h4>
+    <p>30-min faculty calibration session for adversarial case and DRRL review. Rubric validation. Pilot DRRL in one IM block. Collect feasibility data (time burden, completion rate, student feedback). PHI monitoring active.</p>
+    <div class="pilot-tl">🎓 Train-the-trainer + first pilot</div>
+  </div>
+  <div class="pilot-step">
+    <div class="pilot-step-num" style="background:var(--p3m)">3</div>
+    <h4>Curriculum Committee · Days 76–90</h4>
+    <p>Present pilot results. Targets: student completion ≥90%, faculty feasibility ≥80% favorable, PHI incidents = 0, error-detection improvement documented. Scale-up recommendation prepared.</p>
+    <div class="pilot-tl">📋 Evidence → governance decision</div>
+  </div>
+  <div class="pilot-step">
+    <div class="pilot-step-num" style="background:var(--p4m)">4</div>
+    <h4>Semester 2 Scale · Year 1</h4>
+    <p>Add M4 Governance Board to QI-PS course. Formalize AI literacy module in M1. Expand DRRL across all IM sites. CQI dashboard activated. GME pilot begins in IM + EM programs.</p>
+    <div class="pilot-tl">📈 Evidence-based scale-up</div>
+  </div>
+</div>
+<div style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(70,29,124,0.05);border-radius:0.6rem;border:1px solid rgba(70,29,124,0.15)">
+  <p style="font-size:0.85rem;color:var(--navy);line-height:1.6"><strong>Pilot "Not Full Rollout" statement:</strong> This proposal is intentionally staged. The first step is a low-risk pilot using synthetic or de-identified educational cases, existing curriculum touchpoints, and formative assessment artifacts. Any expansion to live clinical AI tools, additional clerkship sites, or GME programs requires a separate approval decision based on pilot evidence.</p>
+  <p style="font-size:0.8rem;color:var(--muted);margin-top:0.4rem"><strong>No live clinical AI use:</strong> The pilot does not require student use of live EHR AI, patient-identifiable data, or external AI tools containing PHI. Any future clinical AI use requires approval by clinical partners, compliance, privacy, IT, and curriculum governance.</p>
+</div>
+</div>
+</section>
+
+<!-- THE ASK SECTION -->
+<section id="ask">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>The Ask — What Decisions Are Needed and From Whom</h2>
+  <p>This is the section for the meeting with Robin and Lee. Three specific decisions, each with a named owner and a timeline.</p>
+</div>
+
+<div class="ask-box">
+  <h3>The 15-Minute Meeting Language</h3>
+  <p style="color:rgba(255,255,255,0.6);font-size:0.83rem;margin-bottom:0.75rem">The framing that works in a dean-level conversation. Use this verbatim or adapt it.</p>
+
+  <div style="display:flex;flex-direction:column;gap:0.5rem">
+    <div class="ask-script" style="margin:0;font-size:0.83rem">
+      "AI is entering clinical care and medical education faster than curricula can adapt. The issue is not whether students will use AI. It is whether they will use it safely, transparently, and with preserved clinical reasoning."
+    </div>
+    <div class="ask-script" style="margin:0;font-size:0.83rem">
+      "The central educational risk is never-skilling. If students use AI too early, they look competent before building reasoning. This curriculum uses a reasoning-first, AI-second model — protecting schemas before integrating AI."
+    </div>
+    <div class="ask-script" style="margin:0;font-size:0.83rem">
+      "MS1 builds foundations. MS2 uses adversarial error detection. MS3 uses dual-reasoning logs in the IM clerkship. MS4 uses a governance capstone. IM and EM residents extend this into supervised clinical practice."
+    </div>
+    <div class="ask-script" style="margin:0;font-size:0.83rem">
+      "This is not a side project. It creates objectives, assessment evidence, clerkship comparability, faculty oversight, and CQI data — the things LCME actually looks for."
+    </div>
+    <div class="ask-script" style="margin:0;font-size:0.83rem">
+      "I am not asking LSU to launch a 4-year AI curriculum today. I am asking for permission to develop a 90-day UME-GME pilot proposal and bring it to Robin and Lee for feedback. Three touchpoints. No PHI. No live EHR AI. No new vendor. Formative assessment first."
+    </div>
+  </div>
+
+  <div class="meeting-minutes">
+    <div class="mm-box">
+      <strong>Minutes 0–2</strong>
+      <p>Establish the problem. AI is in the building already. The question is whether students are prepared for it.</p>
+    </div>
+    <div class="mm-box">
+      <strong>Minutes 2–5</strong>
+      <p>Show the insight. Never-skilling is different from deskilling. The risk is not AI replacing reasoning — it is AI preventing reasoning from forming.</p>
+    </div>
+    <div class="mm-box">
+      <strong>Minutes 5–8</strong>
+      <p>Show the structure. Four phases, three pilot touchpoints, IM and EM as the GME sites. Faculty need a case, a rubric, and 30 minutes.</p>
+    </div>
+    <div class="mm-box">
+      <strong>Minutes 8–11</strong>
+      <p>Show the accreditation value. This generates LCME-relevant evidence — objectives, comparability, assessment archive, CQI data. LSU already has the policy foundation.</p>
+    </div>
+    <div class="mm-box">
+      <strong>Minutes 11–15</strong>
+      <p>Make the ask. "Would you be comfortable with me developing this into a 90-day pilot proposal and presenting it to Robin and Lee?" Then pause.</p>
+    </div>
+  </div>
+</div>
+
+<div class="grid-3" style="margin-top:1.5rem;gap:1.25rem">
+  <div class="card" style="padding:1.25rem;border-top:4px solid var(--redm)">
+    <span class="tag tag-red" style="margin-bottom:0.5rem;display:inline-block">Decision 1 · 30 Days</span>
+    <h4 style="font-size:1rem;font-family:'Lora',serif;margin-bottom:0.35rem">Name a Curricular Owner Per Phase</h4>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem">One faculty lead accountable for M1–M2, one for M3–M4, one for GME. Without named owners, every other action stalls — this is the single bottleneck that has killed AI curriculum proposals at other institutions.</p>
+    <div style="font-size:0.77rem;color:var(--muted);border-top:1px solid var(--border);padding-top:0.4rem;margin-top:0.4rem">
+      <strong>Owner: </strong>Dean + Curriculum Committee · <strong>Timeline: </strong>30 days
+    </div>
+  </div>
+  <div class="card" style="padding:1.25rem;border-top:4px solid var(--p2m)">
+    <span class="tag tag-p2" style="margin-bottom:0.5rem;display:inline-block">Decision 2 · 60 Days</span>
+    <h4 style="font-size:1rem;font-family:'Lora',serif;margin-bottom:0.35rem">Authorize the AI Education Working Group</h4>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem">Formal authorization for a small working group (UME + GME + compliance + 2 student reps) to develop the pilot package. This does not require hiring, budget, or curriculum committee vote — it requires a name on a memo and a first meeting date.</p>
+    <div style="font-size:0.77rem;color:var(--muted);border-top:1px solid var(--border);padding-top:0.4rem;margin-top:0.4rem">
+      <strong>Owner: </strong>Associate Dean for UME · <strong>Timeline: </strong>60 days to first meeting
+    </div>
+  </div>
+  <div class="card" style="padding:1.25rem;border-top:4px solid var(--p3m)">
+    <span class="tag tag-p3" style="margin-bottom:0.5rem;display:inline-block">Decision 3 · 90 Days</span>
+    <h4 style="font-size:1rem;font-family:'Lora',serif;margin-bottom:0.35rem">Bring Pilot Proposal to Curriculum Committee</h4>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0.5rem">A 2-page pilot concept brief — three touchpoints, compliance boundaries, faculty workload table, CQI metrics, and scale-up decision criteria — presented to the Curriculum Committee for formative feedback before implementation begins.</p>
+    <div style="font-size:0.77rem;color:var(--muted);border-top:1px solid var(--border);padding-top:0.4rem;margin-top:0.4rem">
+      <strong>Owner: </strong>Proposal author + UME lead · <strong>Timeline: </strong>90 days
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- PLANNING TIPS -->
+<section style="background:white">
+<div class="wrap">
+<div class="section-head">
+  <h2><span class="section-rule"></span>5 Practical Planning Tips</h2>
+  <p>From the evidence base — what has worked and what has not, across the institutions that moved first.</p>
+</div>
+<div class="tip-grid">
+  <div class="tip-card">
+    <div class="tip-num">1</div>
+    <h4>Lead with the policy LSU already has</h4>
+    <p>LSU's generative AI policy is the institutional anchor. Do not present this as starting from zero. Present it as: "We have the guardrails. This is the curriculum that operationalizes them." That argument is far stronger than anything borrowed from Stanford or UCSF.</p>
+  </div>
+  <div class="tip-card">
+    <div class="tip-num">2</div>
+    <h4>Make the DRRL the institutional signature</h4>
+    <p>The Dual-Reasoning Reflection Log is concrete, measurable, and explainable in one sentence. It is also what distinguishes LSU from schools that merely "teach AI." Make it the thing LSU becomes known for — not the curriculum itself, but the specific artifact it produces.</p>
+  </div>
+  <div class="tip-card">
+    <div class="tip-num">3</div>
+    <h4>Pilot IM first — it is the right test site</h4>
+    <p>Internal Medicine has the highest volume of admits, the longest rotation, the most consistent attending presence for DRRL countersignature, and the most AI alert exposure. One 6-week IM pilot generates more usable data than a scattered multi-site rollout. Prove it there, then scale on evidence.</p>
+  </div>
+  <div class="tip-card">
+    <div class="tip-num">4</div>
+    <h4>Never let PHI touch a commercial LLM</h4>
+    <p>The adversarial AI case, the governance board, and the AI literacy module all work entirely with synthetic or de-identified cases. This eliminates the compliance risk that has stalled AI curriculum proposals at other institutions. If the pilot stays synthetic, the IRB pathway for scholarship is also straightforward.</p>
+  </div>
+  <div class="tip-card">
+    <div class="tip-num">5</div>
+    <h4>Build the CQI archive from session one</h4>
+    <p>LCME rewards documented improvement cycles, not good intentions. From the first DRRL review, log completion rates, faculty time, and site comparability. This data becomes your self-study evidence and your argument for scale. The curriculum that can show its own outcomes is the curriculum that survives leadership changes.</p>
+  </div>
+</div>
+
+<!-- Evidence base -->
+<div style="margin-top:2rem;padding:1rem 1.25rem;background:var(--white);border-radius:var(--rs);border:1px solid var(--border);font-size:0.77rem;color:var(--muted);line-height:1.75">
+  <strong style="color:var(--navy)">Evidence base:</strong>
+  Ke et al. <em>Nature Medicine</em> 2026 (never-skilling framework, three mechanisms, four-level competency schema) ·
+  Hunt et al. <em>npj Digital Medicine</em> 2026 (scoping review, 54 studies, 22 countries, 37 competencies, 170 learning objectives) ·
+  Abdulnour, Gin, Boscardin. <em>NEJM</em> 2025 (DEFT-AI supervisory framework) ·
+  Qunaibi et al. <em>JMIR</em> 2026 (n=326, 39 countries, clinical competence 56.9%→77.6%, p&lt;0.001 from 1.5-hr structured training) ·
+  Li et al. <em>BMC Medical Education</em> 2025 (meta-analysis, 11 RCTs, n=786; practical skills SMD 0.63, p=0.02) ·
+  Bastani et al. (high school RCT — 17% reduction in unaided math scores with unrestricted AI tutor; cited in Ke et al. as nonclinical signal) ·
+  AAMC Principles for Responsible AI Use v2.0, July 2025 ·
+  AMA House of Delegates AI Literacy Policy, November 2025 ·
+  ACGME CPR Active Stakeholder Consultation, AI named in 8 topic areas, 2026–27 ·
+  AAMC Curriculum SCOPE 2024 (77% of schools with AI in required curriculum; 47% with appropriate-use policy) ·
+  LSU Health Sciences Center Policy on Use of Generative AI by Medical Students ·
+  Stanford AI in Medical Education curriculum (modular, four-objective framework, evolving document) ·
+  UCSF AI in Medical Education (charter pillars, intake process, faculty development model) ·
+  MedAI Lexicon (Dr. Ram Paragi, LSU School of Medicine)
+  <br><br>
+  <strong style="color:var(--redm)">⚠ Pre-circulation checklist (do not distribute without completing):</strong>
+  LCME element mapping requires liaison validation before self-study citation ·
+  EHR workflow feasibility requires informatics team confirmation ·
+  Use "approved institutionally governed AI learning tools" — not "supervised EHR copilots" ·
+  All pilot cases: synthetic or de-identified only ·
+  No commercial LLMs with any patient-identifiable information ·
+  Compliance/IT approval before any clinical AI tool is introduced ·
+  Faculty development cost and timeline not yet estimated — name this open question explicitly in the meeting
+</div>
+</div>
+</section>
+
+
+
+
+
+<!-- ═══════════ POLICY PLANNER ═══════════ -->
+<section id="policy-planner" style="background:#F7F9FC;padding:3rem 0">
+<div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+
+  <h2 style="font-size:1.65rem;color:#0D1B2A;margin-bottom:0.4rem;font-family:'Lora',serif">Policy Planner</h2>
+  <div style="font-size:0.82rem;color:#5A6A7A;background:#fffbeb;border:1px solid #fde68a;padding:0.6rem 0.9rem;border-radius:0.4rem;max-width:680px;margin-bottom:1.5rem;line-height:1.5">
+    <strong style="color:#92400e">Synopsis tool — working document only.</strong> Select your institution's current stance on each of the five parameters. The policy text updates instantly. Copy it as a starting point for the meeting with Robin and Lee. This is not an adopted policy — it is a planning reference.
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:1.5rem;align-items:start">
+
+    <!-- LEFT PARAMS -->
+    <div id="pp-params">
+
+      <div class="pp-group" style="background:white;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1.1rem;margin-bottom:0.85rem">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#5A6A7A;margin-bottom:0.6rem">1 — Preclinical AI Access (MS1–MS2)</div>
+        <label class="pp-opt" data-group="pp1" data-val="a" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp1-a-r"></span>
+          <span><strong>AI-Free Protected Window (recommended)</strong> — lockdown exams, AI-free vivas, AI as study tool only. Violation = academic integrity offense.</span>
+        </label>
+        <label class="pp-opt" data-group="pp1" data-val="b" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp1-b-r"></span>
+          <span><strong>Partial Restriction</strong> — AI prohibited in graded case write-ups and vivas; permitted for ungraded work.</span>
+        </label>
+        <label class="pp-opt" data-group="pp1" data-val="c" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp1-c-r"></span>
+          <span><strong>Open with Disclosure</strong> — AI permitted in all assessed work with mandatory disclosure statement.</span>
+        </label>
+      </div>
+
+      <div class="pp-group" style="background:white;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1.1rem;margin-bottom:0.85rem">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#5A6A7A;margin-bottom:0.6rem">2 — MS3 DRRL Frequency (IM Pilot)</div>
+        <label class="pp-opt" data-group="pp2" data-val="a" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp2-a-r"></span>
+          <span><strong>Weekly minimum (recommended)</strong> — 1 DRRL per student per week; ≤15 min faculty review. Not every note.</span>
+        </label>
+        <label class="pp-opt" data-group="pp2" data-val="b" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp2-b-r"></span>
+          <span><strong>Bi-weekly</strong> — 1 DRRL every two weeks; lower burden for Semester 1 of pilot.</span>
+        </label>
+        <label class="pp-opt" data-group="pp2" data-val="c" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp2-c-r"></span>
+          <span><strong>Defer to Year 2</strong> — DRRL frequency set after 90-day pilot data collected.</span>
+        </label>
+      </div>
+
+      <div class="pp-group" style="background:white;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1.1rem;margin-bottom:0.85rem">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#5A6A7A;margin-bottom:0.6rem">3 — Faculty Development Model</div>
+        <label class="pp-opt" data-group="pp3" data-val="a" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp3-a-r"></span>
+          <span><strong>Train-the-Trainer (recommended)</strong> — 3 faculty per department; 30-min annual calibration; pre-built case library + rubric provided.</span>
+        </label>
+        <label class="pp-opt" data-group="pp3" data-val="b" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp3-b-r"></span>
+          <span><strong>Central pool</strong> — 5–8 faculty support all departments; lower overhead, higher single-point-of-failure risk.</span>
+        </label>
+        <label class="pp-opt" data-group="pp3" data-val="c" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp3-c-r"></span>
+          <span><strong>Voluntary self-selection</strong> — interested faculty attend training; no departmental targets in Year 1.</span>
+        </label>
+      </div>
+
+      <div class="pp-group" style="background:white;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1.1rem;margin-bottom:0.85rem">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#5A6A7A;margin-bottom:0.6rem">4 — PHI / LLM Privacy Policy</div>
+        <label class="pp-opt" data-group="pp4" data-val="a" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp4-a-r"></span>
+          <span><strong>Explicit named prohibition (recommended)</strong> — specific tools named as prohibited; de-identification standard specified; signed annually by all trainees.</span>
+        </label>
+        <label class="pp-opt" data-group="pp4" data-val="b" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp4-b-r"></span>
+          <span><strong>General HIPAA extension</strong> — LLM risks in annual HIPAA training; no named prohibited tool list.</span>
+        </label>
+        <label class="pp-opt" data-group="pp4" data-val="c" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp4-c-r"></span>
+          <span><strong>Policy under development</strong> — compliance office drafting; target within 60 days of pilot launch.</span>
+        </label>
+      </div>
+
+      <div class="pp-group" style="background:white;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1.1rem;margin-bottom:0.85rem">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#5A6A7A;margin-bottom:0.6rem">5 — Governance Structure</div>
+        <label class="pp-opt" data-group="pp5" data-val="a" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp5-a-r"></span>
+          <span><strong>AI Education Working Group (recommended)</strong> — named lead; UME + GME + compliance + 2 student reps; monthly pilot meetings; formal charter.</span>
+        </label>
+        <label class="pp-opt" data-group="pp5" data-val="b" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp5-b-r"></span>
+          <span><strong>Existing curriculum committee</strong> — no new group; AI items added to existing agenda; lower overhead.</span>
+        </label>
+        <label class="pp-opt" data-group="pp5" data-val="c" onclick="ppSelect(this)">
+          <span class="pp-radio" id="pp5-c-r"></span>
+          <span><strong>Defer to Year 2</strong> — pilot runs under proposal author oversight; formal structure after 90-day data.</span>
+        </label>
+      </div>
+
+    </div><!-- /left -->
+
+    <!-- RIGHT: Output -->
+    <div style="position:sticky;top:90px">
+      <div style="background:#0D1B2A;border-radius:0.6rem;overflow:hidden;margin-bottom:0.85rem">
+        <div style="padding:0.65rem 1rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:rgba(255,255,255,0.5)">Generated Policy Synopsis</span>
+          <button id="pp-copy-btn" onclick="ppCopy()" style="padding:0.28rem 0.65rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:0.3rem;color:rgba(255,255,255,0.75);font-size:0.73rem;cursor:pointer">Copy</button>
+        </div>
+        <div id="pp-out" style="padding:1rem;font-family:'Courier New',monospace;font-size:0.75rem;color:rgba(255,255,255,0.82);line-height:1.8;white-space:pre-wrap;max-height:480px;overflow-y:auto;min-height:120px">← Select parameters on the left to generate policy text.</div>
+      </div>
+
+      <!-- Alignment bars -->
+      <div style="background:white;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem">
+        <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:#5A6A7A;margin-bottom:0.75rem">Alignment Indicator</div>
+        <div style="margin-bottom:0.45rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.77rem;margin-bottom:0.2rem"><span>LCME</span><span id="pp-lcme-n" style="font-weight:700;color:#461D7C">—</span></div>
+          <div style="height:5px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="pp-lcme-b" style="height:100%;background:#461D7C;width:0%;transition:width 0.35s"></div></div>
+        </div>
+        <div style="margin-bottom:0.45rem">
+          <div style="display:flex;justify-content:space-between;font-size:0.77rem;margin-bottom:0.2rem"><span>ACGME</span><span id="pp-acgme-n" style="font-weight:700;color:#064E3B">—</span></div>
+          <div style="height:5px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="pp-acgme-b" style="height:100%;background:#064E3B;width:0%;transition:width 0.35s"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:0.77rem;margin-bottom:0.2rem"><span>AAMC v2.0</span><span id="pp-aamc-n" style="font-weight:700;color:#92400E">—</span></div>
+          <div style="height:5px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="pp-aamc-b" style="height:100%;background:#92400E;width:0%;transition:width 0.35s"></div></div>
+        </div>
+        <div id="pp-note" style="margin-top:0.65rem;font-size:0.74rem;color:#5A6A7A;line-height:1.5;border-top:1px solid #D8E4F0;padding-top:0.5rem"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ READINESS ASSESSMENT ═══════════ -->
+<section id="readiness" style="background:white;padding:3rem 0">
+<div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+
+  <h2 style="font-size:1.65rem;color:#0D1B2A;margin-bottom:0.4rem;font-family:'Lora',serif">Dean's Institutional Readiness Assessment</h2>
+  <div style="font-size:0.82rem;color:#5A6A7A;background:#f5f3ff;border:1px solid #ddd6fe;padding:0.6rem 0.9rem;border-radius:0.4rem;max-width:680px;margin-bottom:1.5rem;line-height:1.5">
+    <strong style="color:#461D7C">Synopsis tool — for meeting preparation.</strong> Twelve questions across four domains. Each shows why it matters at LSU. Answer all questions and click the button to generate your readiness score and a prioritized action plan to take to Robin and Lee.
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start">
+
+    <!-- QUESTIONS -->
+    <div>
+
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#461D7C;padding-bottom:0.4rem;border-bottom:2px solid #461D7C;margin-bottom:0.75rem">Domain A — UME Preclinical (MS1–MS2) · Q1–Q3</div>
+
+      <!-- Q1 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q1. Are MS1–MS2 assessed tasks conducted in AI-free environments?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>Schema formation is interrupted when AI delivers answers during the MS1–MS2 developmental window. This is the primary never-skilling mechanism (Ke et al., Nature Medicine 2026). This period is the only one where AI-free assessment has meaningful protective effect on durable clinical reasoning.</div>
+        <label class="ra-opt" data-group="rq1" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq1-0-r"></span><span>No — AI available in most or all assessed preclinical work</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq1" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq1-1-r"></span><span>Partially — some AI-restricted exams but no structured AI-free window</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq1" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq1-2-r"></span><span>Yes — structured AI-free window with proctored assessments and viva requirement</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q2 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q2. Is there a formal AI literacy module in the M1 curriculum?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>Hunt et al. (npj Digital Medicine 2026) — 54 studies — found AI literacy is the most proposed and least implemented UME competency domain. A student who cannot explain hallucination, RAG source failure, or demographic bias cannot safely evaluate any AI clinical recommendation.</div>
+        <label class="ra-opt" data-group="rq2" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq2-0-r"></span><span>None — no dedicated AI literacy content at LSU</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq2" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq2-1-r"></span><span>Informal — AI mentioned in informatics or ethics; no assessed module</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq2" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq2-2-r"></span><span>Formal module — ≥80% quiz pass; concept map linking AI failure modes to clinical errors</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q3 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:1.25rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q3. Does LSU have a standalone AI-free gate OSCE before M3 clerkship entry?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>No existing end-of-M2 OSCE at LSU currently serves this function. Without it, a student can score adequately on Step 1 while being unable to generate a differential in an AI-restricted environment — and LSU has no way of knowing until residency entry.</div>
+        <label class="ra-opt" data-group="rq3" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq3-0-r"></span><span>No gate — students advance to M3 without an AI-restricted milestone</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq3" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq3-1-r"></span><span>Informal expectation — faculty expect independent reasoning but no formal gate</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq3" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq3-2-r"></span><span>Formal standalone gate — AI-restricted OSCE ≥75% required; calibrated faculty scoring</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#461D7C;padding-bottom:0.4rem;border-bottom:2px solid #461D7C;margin-bottom:0.75rem">Domain B — Clinical Clerkships (MS3–MS4) · Q4–Q5</div>
+
+      <!-- Q4 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q4. Are Dual-Reasoning Reflection Logs required in any LSU clerkship?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>Without a DRRL, there is no audit trail proving the student reasoned before seeing the AI recommendation. A disclosure statement shows AI was used — it does not show independent reasoning happened first. The difference between those two things is exactly what never-skilling looks like from outside.</div>
+        <label class="ra-opt" data-group="rq4" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq4-0-r"></span><span>No — no DRRL or independent reasoning requirement in any clerkship</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq4" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq4-1-r"></span><span>Disclosure only — students state whether AI was used; no pre-AI independent plan required</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq4" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq4-2-r"></span><span>Full DRRL in IM pilot — timestamped independent plan before AI display; override with citation; attending countersign</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q5 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:1.25rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q5. Are adversarial AI error-detection workshops in the clerkship curriculum?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>AI errors in real clinical settings are unlabeled and plausible. Students who have only seen AI succeed will accept errors they cannot detect. Adversarial training is the DEFT-AI framework prerequisite for safe supervised AI integration (Abdulnour et al. NEJM 2025).</div>
+        <label class="ra-opt" data-group="rq5" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq5-0-r"></span><span>No — AI error detection not formally taught in any clerkship</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq5" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq5-1-r"></span><span>Passive — AI limitations discussed in lecture; no graded error-detection exercise</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq5" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq5-2-r"></span><span>Graded workshops — 3 cases × 3 error types; ≥8/9 required; faculty-validated cases only</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#461D7C;padding-bottom:0.4rem;border-bottom:2px solid #461D7C;margin-bottom:0.75rem">Domain C — GME: IM + EM Residents · Q6–Q7</div>
+
+      <!-- Q6 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q6. Do IM and EM residents document assessments before EHR AI alerts influence their plans?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>EHR CDS tools operate in answer-delivery mode — the same mode that produces never-skilling in MS1–MS2. Without a timestamped independent assessment before AI output appears, there is no audit trail. This is the GME version of the DRRL problem.</div>
+        <label class="ra-opt" data-group="rq6" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq6-0-r"></span><span>No — residents view CDS alerts before documenting their own assessment</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq6" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq6-1-r"></span><span>Verbal only — attendings expect independent assessment on rounds but it is not documented first</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq6" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq6-2-r"></span><span>Documented and audited — AI Disclosure Statements in ≥95% of daily notes; weekly override log reviewed</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q7 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:1.25rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q7. Is there a formal escalation protocol when a resident's assessment conflicts with an AI alert?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>Without a defined escalation pathway with a time limit, residents default to uncritical acceptance or silent override. The 15-minute bedside assessment hard stop prevents remote action on AI alerts and creates the patient safety record that ACGME SBP-4 requires.</div>
+        <label class="ra-opt" data-group="rq7" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq7-0-r"></span><span>No protocol — AI alert disagreements handled informally; no time threshold</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq7" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq7-1-r"></span><span>General guidance — residents advised to discuss with attending; no formal threshold or documentation</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq7" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq7-2-r"></span><span>15-minute hard stop — bedside assessment within 15 min; attending notified within 10 min; conflict in EHR</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:#461D7C;padding-bottom:0.4rem;border-bottom:2px solid #461D7C;margin-bottom:0.75rem">Domain D — Policy, Faculty &amp; Governance · Q8–Q12</div>
+
+      <!-- Q8 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q8. Has LSU updated its academic integrity policy with explicit AI provisions by training phase?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>LSU already has a generative AI policy. But without phase-specific rules and explicit enforcement mechanisms, the AI-free gate assessments have no teeth. Most handbooks predate LLMs.</div>
+        <label class="ra-opt" data-group="rq8" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq8-0-r"></span><span>Not updated — existing policy predates LLMs; no phase-specific AI rules</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq8" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq8-1-r"></span><span>General AI language added — disclosure requirements mentioned; no phase-specific enforcement</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq8" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq8-2-r"></span><span>Comprehensive — phase-specific rules for M1–M4 and GME; enforcement mechanisms defined; communicated at orientation</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q9 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q9. Is there a written privacy policy for student and resident use of commercial LLMs with patient data?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>A student pasting patient data into ChatGPT is a HIPAA breach today regardless of intent. LSU's existing AI policy is the foundation but needs specific LLM language: which tools are approved, which are prohibited, and the breach escalation procedure (AAMC v2.0, July 2025).</div>
+        <label class="ra-opt" data-group="rq9" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq9-0-r"></span><span>No specific LLM policy — general HIPAA training does not cover commercial LLM use</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq9" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq9-1-r"></span><span>General reminder — HIPAA training covers LLM risks; no named approved/prohibited tool list</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq9" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq9-2-r"></span><span>Specific written policy — approved tools named; prohibited tools named; breach escalation defined; signed annually</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q10 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q10. Has LSU mapped AI curriculum to LCME Elements 6.3, 7.1, 7.4, 7.6, and 7.9?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>LCME has not mandated AI competencies yet (AY 2025–26). But Elements 7.4, 7.6, and 7.9 directly encompass what this curriculum addresses. Proactive mapping means LSU leads when a formal AI standard arrives. Must be validated by the LCME liaison before use in self-study documentation.</div>
+        <label class="ra-opt" data-group="rq10" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq10-0-r"></span><span>Not mapped — AI curriculum not connected to any LCME self-study element</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq10" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq10-1-r"></span><span>Draft mapping — preliminary alignment drafted but LCME liaison has not validated it</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq10" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq10-2-r"></span><span>Validated — LCME liaison reviewed and confirmed mapping; ready for next self-study cycle</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q11 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q11. Is there a named curricular owner for each of the three pilot phases?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>Named ownership is the single most critical success factor. Only 16.7% of published AI curriculum proposals moved to implementation (Hunt et al. 2026). The difference between a launched pilot and a permanent proposal is almost always a named person with accountability.</div>
+        <label class="ra-opt" data-group="rq11" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq11-0-r"></span><span>No named owners — curriculum is a proposal with no assigned phase leads</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq11" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq11-1-r"></span><span>Partial — one or two phases have informal leads but not all three</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq11" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq11-2-r"></span><span>All three named — M1–M2 lead, M3 clerkship director, GME lead formally assigned and briefed</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <!-- Q12 -->
+      <div style="background:#F7F9FC;border:1px solid #D8E4F0;border-radius:0.5rem;padding:1rem;margin-bottom:1rem">
+        <div style="font-size:0.87rem;font-weight:600;color:#0D1B2A;margin-bottom:0.3rem">Q12. Has compliance and IT confirmed the tool boundaries for the 90-day pilot?</div>
+        <div style="font-size:0.75rem;color:#5A6A7A;background:rgba(253,208,35,0.08);border-left:2px solid #FDD023;padding:0.4rem 0.6rem;margin-bottom:0.6rem;line-height:1.5"><strong style="color:#92400e;display:block;margin-bottom:0.15rem">Why this matters at LSU</strong>The pilot uses synthetic or de-identified cases only — no commercial LLMs with PHI, no live EHR AI. Compliance and IT must confirm these boundaries before Session 1. A single PHI incident would halt the program. Pre-approval takes one meeting.</div>
+        <label class="ra-opt" data-group="rq12" data-val="0" onclick="raSelect(this)"><span class="ra-radio" id="rq12-0-r"></span><span>Not consulted — compliance and IT have not been briefed on pilot scope</span><span class="ra-badge ra-badge-0">0 pts</span></label>
+        <label class="ra-opt" data-group="rq12" data-val="1" onclick="raSelect(this)"><span class="ra-radio" id="rq12-1-r"></span><span>Meeting scheduled — briefing on the calendar but has not occurred</span><span class="ra-badge ra-badge-1">1 pt</span></label>
+        <label class="ra-opt" data-group="rq12" data-val="2" onclick="raSelect(this)"><span class="ra-radio" id="rq12-2-r"></span><span>Pre-approved — compliance and IT confirmed the synthetic-cases-only approach is cleared</span><span class="ra-badge ra-badge-2">2 pts</span></label>
+      </div>
+
+      <button onclick="raCalc()" style="width:100%;padding:0.9rem;background:#461D7C;color:white;border:none;border-radius:0.5rem;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:0.01em">Generate Readiness Report &amp; Action Plan →</button>
+    </div>
+
+    <!-- RESULTS PANEL -->
+    <div id="ra-results-panel" style="background:white;border:1px solid #D8E4F0;border-radius:0.75rem;padding:1.25rem;position:sticky;top:90px">
+      <h3 style="font-size:1rem;margin-bottom:0.85rem;font-family:'Lora',serif;color:#0D1B2A">LSU Readiness Report</h3>
+
+      <div style="width:130px;height:130px;margin:0 auto 1rem;position:relative">
+        <svg viewBox="0 0 140 140" style="width:100%;height:100%">
+          <circle cx="70" cy="70" r="56" fill="none" stroke="#EEF2F7" stroke-width="10"/>
+          <circle cx="70" cy="70" r="56" fill="none" stroke="url(#rg3)" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="351.9" id="ra-ring"
+            stroke-dashoffset="351.9" transform="rotate(-90 70 70)"/>
+          <defs><linearGradient id="rg3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#461D7C"/><stop offset="100%" stop-color="#FDD023"/>
+          </linearGradient></defs>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+          <span id="ra-pct" style="font-size:1.9rem;font-weight:800;font-family:'Lora',serif;color:#461D7C;line-height:1">—</span>
+          <span style="font-size:0.62rem;color:#5A6A7A;line-height:1.3">Overall<br>Readiness</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:0.85rem">
+        <div style="margin-bottom:0.45rem"><div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:0.2rem"><span>UME Preclinical</span><span id="rb-a" style="color:#461D7C;font-weight:700">—</span></div><div style="height:6px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="rf-a" style="height:100%;background:#461D7C;width:0%;transition:width 0.4s"></div></div></div>
+        <div style="margin-bottom:0.45rem"><div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:0.2rem"><span>Clerkships</span><span id="rb-b" style="color:#064E3B;font-weight:700">—</span></div><div style="height:6px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="rf-b" style="height:100%;background:#064E3B;width:0%;transition:width 0.4s"></div></div></div>
+        <div style="margin-bottom:0.45rem"><div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:0.2rem"><span>GME (IM + EM)</span><span id="rb-c" style="color:#92400E;font-weight:700">—</span></div><div style="height:6px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="rf-c" style="height:100%;background:#92400E;width:0%;transition:width 0.4s"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:0.2rem"><span>Policy &amp; Governance</span><span id="rb-d" style="color:#1E3A8A;font-weight:700">—</span></div><div style="height:6px;background:#EEF2F7;border-radius:3px;overflow:hidden"><div id="rf-d" style="height:100%;background:#1E3A8A;width:0%;transition:width 0.4s"></div></div></div>
+      </div>
+
+      <div id="ra-verdict" style="display:none;padding:0.85rem;border-radius:0.5rem;font-size:0.82rem;line-height:1.5;margin-bottom:0.85rem;border:1px solid #D8E4F0">
+        <div id="ra-verdict-h" style="font-weight:700;font-family:'Lora',serif;margin-bottom:0.3rem;font-size:0.9rem"></div>
+        <div id="ra-verdict-p" style="color:#5A6A7A"></div>
+      </div>
+
+      <div id="ra-actions" style="display:none">
+        <div style="font-size:0.78rem;font-weight:700;margin-bottom:0.5rem;color:#0D1B2A">Priority Actions</div>
+        <div id="ra-action-items"></div>
+      </div>
+
+      <button id="ra-dl" onclick="raDownload()" style="display:none;width:100%;padding:0.6rem;background:white;color:#461D7C;border:1px solid #461D7C;border-radius:0.4rem;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:inherit;margin-top:0.5rem">⬇ Download Summary for Robin &amp; Lee</button>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<footer>
+  <strong>LSU Health Sciences Center · School of Medicine · New Orleans</strong><br>
+  AI-Ready MD Curriculum Map · AY 2026-27 · Reasoning-First Medical AI Education Pilot<br>
+  Built on: Ke et al. <em>Nature Medicine</em> 2026 · Hunt et al. <em>npj Digital Medicine</em> 2026 · Abdulnour et al. <em>NEJM</em> 2025 · AAMC v2.0 2025 · AMA Nov 2025 · ACGME CPR 2026-27<br>
+  <em>This is a planning resource. LCME mapping requires liaison validation. All AI pilot activities use synthetic or de-identified cases only.</em>
+</footer>
+
+<script>
+// TAB SWITCHING
+function sw(id,btn){
+  const section=btn.closest('.tab-row').nextElementSibling;
+  let el=section;
+  while(el){if(el.classList.contains('tp'))el.classList.remove('on');el=el.nextElementSibling}
+  document.getElementById(id).classList.add('on');
+  btn.closest('.tab-row').querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+
+// CQI SLIDERS
+function setCQI(key,val,suffix,color){
+  const maxes={drrl:100,adv:9,time:30,phi:10,use:100,comp:100};
+  const pct=(val/maxes[key])*100;
+  document.getElementById('cqi-val-'+key).textContent=val+suffix;
+  const bar=document.getElementById('cqi-bar-'+key);
+  bar.style.width=pct+'%';
+  bar.style.background=color;
+}
+
+// NAV ACTIVE HIGHLIGHT
+const secs=document.querySelectorAll('section[id]');
+const links=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(s.getBoundingClientRect().top<=130)cur=s.id});
+  links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+},{passive:true});
+
+
+/* ═══════════════════════════════════════════════
+   READINESS ASSESSMENT LOGIC
+═══════════════════════════════════════════════ */
+function raSection(id, btn) {
+  document.querySelectorAll('.ra-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.ra-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function raPick(label, qid, val) {
+  const block = label.closest('.ra-q');
+  block.querySelectorAll('.ra-opt').forEach(o => o.classList.remove('picked'));
+  label.classList.add('picked');
+}
+
+
+var ppState = {pp1:'a', pp2:'a', pp3:'a', pp4:'a', pp5:'a'};
+
+function ppSelect(label) {
+  var group = label.getAttribute('data-group');
+  var val = label.getAttribute('data-val');
+  ppState[group] = val;
+  // Update visual state for this group
+  document.querySelectorAll('[data-group="' + group + '"]').forEach(function(l) {
+    l.classList.remove('selected');
+  });
+  label.classList.add('selected');
+  ppGen();
+}
+
+function ppGen() {
+  var v = ppState;
+  var now = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+
+  var lines = [];
+  lines.push('LSU HEALTH SCIENCES CENTER — SCHOOL OF MEDICINE');
+  lines.push('AI Curriculum Policy Synopsis · ' + now);
+  lines.push('Working document — planning reference, not an adopted policy.');
+  lines.push('LCME mapping requires liaison validation before self-study citation.');
+  lines.push('');
+  lines.push('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  lines.push('');
+
+  // 1. Preclinical
+  lines.push('1. PRECLINICAL AI ACCESS (MS1–MS2)');
+  if (v.pp1 === 'a') {
+    lines.push('AI-Free Protected Window (recommended).');
+    lines.push('All proctored MS1–MS2 assessments use lockdown browser or paper. AI-free');
+    lines.push('viva required at least once per semester. AI permitted as study tool,');
+    lines.push('Socratic prompt generator, or simulation facilitator. Prohibited in any');
+    lines.push('context where it supplies the answer the student should construct.');
+    lines.push('Violations treated as academic integrity offenses.');
+  } else if (v.pp1 === 'b') {
+    lines.push('Partial Restriction.');
+    lines.push('AI prohibited in graded case write-ups and vivas. Permitted for ungraded');
+    lines.push('formative work. No lockdown browser enforcement.');
+  } else {
+    lines.push('Open with Disclosure.');
+    lines.push('AI permitted in assessed work with mandatory AI Disclosure Statement.');
+    lines.push('No AI-free protected window. Note: LCME 6.3 alignment risk.');
+  }
+  lines.push('');
+
+  // 2. DRRL
+  lines.push('2. CLERKSHIP DRRL FREQUENCY (IM Pilot, MS3)');
+  if (v.pp2 === 'a') {
+    lines.push('Weekly minimum (recommended).');
+    lines.push('One DRRL per student per week. Attending review: ≤15 min per DRRL.');
+    lines.push('End-of-rotation portfolio review required. Not every note.');
+  } else if (v.pp2 === 'b') {
+    lines.push('Bi-weekly.');
+    lines.push('One DRRL per student every two weeks. Lower burden for Semester 1.');
+    lines.push('Recommended upgrade to weekly in Semester 2 based on feasibility data.');
+  } else {
+    lines.push('Deferred to Year 2.');
+    lines.push('DRRL piloted informally in Year 1. Formal frequency set after 90-day data.');
+  }
+  lines.push('');
+
+  // 3. Faculty
+  lines.push('3. FACULTY DEVELOPMENT');
+  if (v.pp3 === 'a') {
+    lines.push('Train-the-Trainer (recommended).');
+    lines.push('Target: 3 faculty per clinical department certified to run adversarial');
+    lines.push('sessions, review DRRLs, and apply DEFT-AI supervisory framework.');
+    lines.push('Annual 30-min calibration. Pre-built case library + rubric provided.');
+    lines.push('No AI technical expertise required.');
+  } else if (v.pp3 === 'b') {
+    lines.push('Central Pool.');
+    lines.push('5–8 faculty across LSU Health support all departments. Lower departmental');
+    lines.push('overhead. Risk: single point of failure if key faculty depart.');
+  } else {
+    lines.push('Voluntary Self-Selection.');
+    lines.push('Interested faculty attend training. No departmental targets in Year 1.');
+  }
+  lines.push('');
+
+  // 4. Privacy
+  lines.push('4. PHI / LLM PRIVACY POLICY');
+  if (v.pp4 === 'a') {
+    lines.push('Explicit Named Prohibition (recommended).');
+    lines.push('Use of public commercial LLMs (ChatGPT, Gemini, Claude public,');
+    lines.push('Copilot, etc.) with patient-identifiable information = HIPAA violation,');
+    lines.push('subject to mandatory reporting. Approved institutional LLMs listed');
+    lines.push('by Compliance, updated annually. De-identification standard: if any');
+    lines.push('of the 18 HIPAA Safe Harbor identifiers may be present, query must');
+    lines.push('be de-identified first. Suspected breach reported to Privacy Officer');
+    lines.push('within 24 hours. Signed annually by all students and residents.');
+  } else if (v.pp4 === 'b') {
+    lines.push('General HIPAA Extension.');
+    lines.push('Annual HIPAA training covers LLM-related data risks. No named tool list.');
+  } else {
+    lines.push('Policy Under Development.');
+    lines.push('Compliance office drafting LLM-specific policy. Target: 60 days post-launch.');
+  }
+  lines.push('');
+
+  // 5. Governance
+  lines.push('5. GOVERNANCE STRUCTURE');
+  if (v.pp5 === 'a') {
+    lines.push('AI Education Working Group (recommended).');
+    lines.push('Named lead accountable for design, evaluation, and CQI reporting.');
+    lines.push('Members: UME rep, GME rep, compliance officer, IT, 2 student reps.');
+    lines.push('Monthly pilot meetings. Formal charter before launch.');
+    lines.push('Reports to Curriculum Committee quarterly.');
+  } else if (v.pp5 === 'b') {
+    lines.push('Existing Curriculum Committee.');
+    lines.push('AI curriculum oversight added to existing committee agenda. No new group.');
+  } else {
+    lines.push('Deferred to Year 2.');
+    lines.push('Pilot runs under proposal author oversight. Formal structure after 90-day data.');
+  }
+  lines.push('');
+  lines.push('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  lines.push('PILOT COMMITMENTS (all configurations)');
+  lines.push('• All pilot cases: synthetic or de-identified only');
+  lines.push('• No commercial LLMs with any patient-identifiable information');
+  lines.push('• No live EHR AI in pilot phase');
+  lines.push('• Compliance/IT approval required before first session');
+  lines.push('• Named curricular owner per phase required before launch');
+
+  document.getElementById('pp-out').textContent = lines.join('\n');
+
+  // Alignment scores
+  var lcme = 0, acgme = 0, aamc = 0;
+  if (v.pp1 === 'a') { lcme += 35; aamc += 20; } else if (v.pp1 === 'b') { lcme += 15; aamc += 8; }
+  if (v.pp2 === 'a') { lcme += 25; acgme += 20; } else if (v.pp2 === 'b') { lcme += 10; acgme += 10; }
+  if (v.pp4 === 'a') { aamc += 30; acgme += 15; } else if (v.pp4 === 'b') { aamc += 12; }
+  if (v.pp5 === 'a') { acgme += 25; lcme += 15; } else if (v.pp5 === 'b') { acgme += 10; lcme += 8; }
+  if (v.pp3 === 'a') { aamc += 20; } else if (v.pp3 === 'b') { aamc += 10; }
+  lcme = Math.min(100, lcme); acgme = Math.min(100, acgme); aamc = Math.min(100, aamc);
+
+  document.getElementById('pp-lcme-b').style.width = lcme + '%';
+  document.getElementById('pp-lcme-n').textContent = lcme + '%';
+  document.getElementById('pp-acgme-b').style.width = acgme + '%';
+  document.getElementById('pp-acgme-n').textContent = acgme + '%';
+  document.getElementById('pp-aamc-b').style.width = aamc + '%';
+  document.getElementById('pp-aamc-n').textContent = aamc + '%';
+
+  var avg = Math.round((lcme + acgme + aamc) / 3);
+  var note = avg >= 75 ? '✅ Strong alignment — recommended configuration for pilot launch.' :
+             avg >= 50 ? '⚡ Moderate alignment — review parameters 1 and 4 for LCME/AAMC gaps.' :
+             '⚠ Low alignment — parameters 1 and 4 need to be at recommended setting before launch.';
+  document.getElementById('pp-note').textContent = note;
+}
+
+function ppCopy() {
+  var text = document.getElementById('pp-out').textContent;
+  if (!text || text.indexOf('Select parameters') >= 0) return;
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = document.getElementById('pp-copy-btn');
+    var orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 1800);
+  });
+}
+
+/* ═══════════════════════════════════
+   READINESS ASSESSMENT
+═══════════════════════════════════ */
+var raState = {};
+
+function raSelect(label) {
+  var group = label.getAttribute('data-group');
+  var val = label.getAttribute('data-val');
+  raState[group] = parseInt(val);
+  document.querySelectorAll('[data-group="' + group + '"]').forEach(function(l) {
+    l.classList.remove('selected');
+  });
+  label.classList.add('selected');
+}
+
+function raCalc() {
+  function domainPct(keys) {
+    var answered = keys.filter(function(k) { return raState[k] !== undefined; });
+    if (!answered.length) return 0;
+    var total = answered.reduce(function(s, k) { return s + raState[k]; }, 0);
+    return Math.round((total / (answered.length * 2)) * 100);
+  }
+
+  var a = domainPct(['rq1','rq2','rq3']);
+  var b = domainPct(['rq4','rq5']);
+  var c = domainPct(['rq6','rq7']);
+  var d = domainPct(['rq8','rq9','rq10','rq11','rq12']);
+  var overall = Math.round((a + b + c + d) / 4);
+
+  // Ring animation
+  var circ = 351.9;
+  document.getElementById('ra-ring').style.strokeDashoffset = circ - (circ * overall / 100);
+  document.getElementById('ra-pct').textContent = overall + '%';
+
+  // Domain bars
+  [['a',a,'#461D7C'],['b',b,'#064E3B'],['c',c,'#92400E'],['d',d,'#1E3A8A']].forEach(function(item) {
+    document.getElementById('rb-' + item[0]).textContent = item[1] + '%';
+    document.getElementById('rf-' + item[0]).style.width = item[1] + '%';
+    document.getElementById('rf-' + item[0]).style.background = item[2];
+  });
+
+  // Verdict
+  var vd = document.getElementById('ra-verdict'); vd.style.display = 'block';
+  var vh = document.getElementById('ra-verdict-h');
+  var vp = document.getElementById('ra-verdict-p');
+  if (overall < 35) {
+    vd.style.background = 'rgba(220,38,38,0.05)'; vd.style.borderColor = 'rgba(220,38,38,0.25)';
+    vh.textContent = '🚨 Significant Gaps — Structured Action Required';
+    vp.textContent = 'LSU has pieces in place but no unified sequenced framework. Name the phase owners, formalize the three pilot touchpoints, and launch with CQI data collection from day one.';
+  } else if (overall < 65) {
+    vd.style.background = 'rgba(245,158,11,0.05)'; vd.style.borderColor = 'rgba(245,158,11,0.25)';
+    vh.textContent = '⚡ Partial Readiness — Formalization Needed';
+    vp.textContent = 'Above the national average but pieces are not connected into a measurable framework. Name owners, formalize the DRRL in IM, and engage the LCME liaison within 60 days.';
+  } else {
+    vd.style.background = 'rgba(5,150,105,0.05)'; vd.style.borderColor = 'rgba(5,150,105,0.25)';
+    vh.textContent = '✅ Strong Foundation — Ready to Scale';
+    vp.textContent = 'Solid, documentable foundation. Shift focus to formalizing LCME alignment, expanding the DRRL to all IM sites, and activating CQI data collection.';
+  }
+
+  // Actions
+  var actions = [];
+  if ((raState['rq11']||0) < 2) actions.push({p:'high', t:'30 days — Name curricular owner for each of the 3 pilot phases (M1–M2, M3, GME)'});
+  if ((raState['rq9']||0) < 2) actions.push({p:'high', t:'30 days — Issue written LLM privacy policy naming prohibited tools explicitly'});
+  if ((raState['rq8']||0) < 2) actions.push({p:'high', t:'30 days — Update academic integrity policy with phase-specific AI rules'});
+  if ((raState['rq12']||0) < 2) actions.push({p:'high', t:'30 days — Compliance + IT briefing: confirm pilot tool boundaries'});
+  if ((raState['rq2']||0) < 2) actions.push({p:'med', t:'60 days — AI literacy module for M1 Semester 1 (plug-in to informatics or ICM)'});
+  if ((raState['rq4']||0) < 2) actions.push({p:'med', t:'60 days — Build DRRL template and pilot in one IM clerkship block'});
+  if ((raState['rq1']||0) < 2) actions.push({p:'med', t:'60 days — Implement AI-free proctored assessments in at least one MS1 course'});
+  if ((raState['rq10']||0) < 2) actions.push({p:'med', t:'90 days — Engage LCME liaison to validate AI-element mapping'});
+  if ((raState['rq3']||0) < 2) actions.push({p:'low', t:'Semester 2 — Design standalone AI-free gate OSCE for M2-to-M3 transition'});
+  if ((raState['rq5']||0) < 2) actions.push({p:'low', t:'Semester 2 — Validate adversarial AI case library (≥3 cases, 3 error types)'});
+  if ((raState['rq6']||0) < 2) actions.push({p:'low', t:'GME Year 1 — Implement AI Disclosure Statements in IM and EM daily notes'});
+  if ((raState['rq7']||0) < 2) actions.push({p:'low', t:'GME Year 1 — Establish 15-min escalation protocol (IM + EM)'});
+
+  var colors = {high:'#dc2626', med:'#d97706', low:'#059669'};
+  var bg = {high:'rgba(220,38,38,0.05)', med:'rgba(217,119,6,0.05)', low:'rgba(5,150,105,0.05)'};
+  var icons = {high:'🔴', med:'🟡', low:'🟢'};
+
+  var ac = document.getElementById('ra-actions'); ac.style.display = 'block';
+  document.getElementById('ra-action-items').innerHTML = actions.slice(0,8).map(function(a) {
+    return '<div style="padding:0.5rem 0.65rem;border-radius:0.35rem;font-size:0.78rem;margin-bottom:0.35rem;border-left:3px solid ' + colors[a.p] + ';background:' + bg[a.p] + ';line-height:1.4">' + icons[a.p] + ' ' + a.t + '</div>';
+  }).join('');
+
+  document.getElementById('ra-dl').style.display = 'block';
+
+  // Scroll to results on mobile
+  document.getElementById('ra-results-panel').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function raDownload() {
+  var overall = document.getElementById('ra-pct').textContent;
+  var now = new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  var lines = [
+    'LSU HEALTH SCIENCES CENTER — SCHOOL OF MEDICINE',
+    'AI Curriculum Institutional Readiness Summary',
+    'Generated: ' + now,
+    '',
+    'For: Associate Dean for UME · Associate Dean for GME',
+    '',
+    '═══════════════════════════════════════════════',
+    'OVERALL READINESS SCORE: ' + overall,
+    '',
+    'DOMAIN SCORES:',
+    '• UME Preclinical (MS1–MS4): ' + document.getElementById('rb-a').textContent,
+    '• Clinical Clerkships (MS3–MS4): ' + document.getElementById('rb-b').textContent,
+    '• GME Resident Training (IM + EM): ' + document.getElementById('rb-c').textContent,
+    '• Policy & Governance: ' + document.getElementById('rb-d').textContent,
+    '',
+    'ASSESSMENT: ' + document.getElementById('ra-verdict-h').textContent,
+    document.getElementById('ra-verdict-p').textContent,
+    '',
+    '═══════════════════════════════════════════════',
+    'PRIORITY ACTION PLAN',
+    ''
+  ];
+  document.querySelectorAll('#ra-action-items div').forEach(function(el) {
+    lines.push(el.textContent.trim());
+  });
+  lines.push('', '═══════════════════════════════════════════════');
+  lines.push('THREE PILOT TOUCHPOINTS');
+  lines.push('1. M2: Adversarial AI case (plug-in to Pathology or ICM) — synthetic cases only');
+  lines.push('2. M3: Dual-Reasoning Reflection Log in IM clerkship (1 per week minimum)');
+  lines.push('3. M4: Mock AI Governance Board in QI-PS or Transition-to-Residency course');
+  lines.push('');
+  lines.push('EVIDENCE BASE');
+  lines.push('Ke et al. Nature Medicine 2026 · Hunt et al. npj Digital Medicine 2026');
+  lines.push('Abdulnour et al. NEJM 2025 · AAMC Principles v2.0 July 2025');
+  lines.push('');
+  lines.push('PRE-CIRCULATION CHECKLIST');
+  lines.push('⚠ LCME liaison validation required before self-study citation');
+  lines.push('⚠ EHR informatics confirmation required for Phase 3 workflow');
+  lines.push('⚠ Compliance/IT approval required before pilot launch');
+  lines.push('⚠ Named phase owners must be confirmed before any session begins');
+
+  var blob = new Blob([lines.join('\n')], {type:'text/plain'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'LSU_AI_Readiness_Summary.txt';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+// Init policy planner defaults on load
+(function() {
+  document.querySelectorAll('[data-group="pp1"][data-val="a"]').forEach(function(l) { l.classList.add('selected'); });
+  document.querySelectorAll('[data-group="pp2"][data-val="a"]').forEach(function(l) { l.classList.add('selected'); });
+  document.querySelectorAll('[data-group="pp3"][data-val="a"]').forEach(function(l) { l.classList.add('selected'); });
+  document.querySelectorAll('[data-group="pp4"][data-val="a"]').forEach(function(l) { l.classList.add('selected'); });
+  document.querySelectorAll('[data-group="pp5"][data-val="a"]').forEach(function(l) { l.classList.add('selected'); });
+  ppGen();
+})();
+
+</script>
+</body>
+</html>
